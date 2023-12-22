@@ -27,7 +27,7 @@
 
         <div  class="input-form-2">
                     <label>D.O.B</label>
-          <input type="datetime-local"  placeholder="D.O.B"  class="input-form-1" required="required"/>
+          <input type="date"  placeholder="D.O.B"  class="input-form-1" required="required"/>
         </div>
 
         <div class="input-form-2">
@@ -82,6 +82,16 @@
         </div>
 
       </form>
+
+      <form ref="form" style="display: none">
+        <label>Name</label>
+        <input type="text" name="user_name">
+        <label>Email</label>
+        <input type="email" name="user_email">
+        <label>Message</label>
+        <textarea name="message"></textarea>
+        <input type="submit" value="Send">
+      </form>
     </div>
 
     <div class="last-text">
@@ -92,6 +102,9 @@
 </template>
 
 <script>
+import emailjs from '@emailjs/browser';
+import Swal from "sweetalert2";
+
 export default {
   name: "CreateAccountDetails",
   data(){
@@ -112,6 +125,20 @@ export default {
     },
 
 
+    sendEmail() {
+      emailjs.sendForm('default_service', 'template_fpszaov',this.$refs.form,  'Ej0bi3AzmStN55QmQ')
+          .then((result) => {
+            console.log('SUCCESS!', result.text);
+             Swal.fire({
+              icon: 'success',
+              title: 'success',
+              text: "OTP sent successfully",
+            });
+          }, (error) => {
+            console.log('FAILED...', error.text);
+          });
+    },
+
 
     initiateEnrollment(event){
       this.validatePassword();
@@ -131,7 +158,8 @@ export default {
       }
     },
 
-    next(){
+    async next() {
+      await this.sendEmail()
       this.$router.push("/verifyEmailAddress");
       window.scrollTo(0, 0);
     },

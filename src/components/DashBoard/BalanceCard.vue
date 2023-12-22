@@ -1,7 +1,6 @@
 <template>
   <section id="BalanceCard" class="balance-wrapper margin-top margin-large">
-    <div v-show="this.userData === 'account1'" class="balance heading-style-h2" >&#36;{{this.contacts.Balance1}}.00</div>
-    <div v-show="this.userData === 'account2'" class="balance heading-style-h2" >&#36;{{this.contacts.Balance2}}.00</div>
+    <div class="balance heading-style-h2" >&#36;{{this.contacts.Balance1 + this.contacts.Balance2}}.00</div>
 <!--    <div class="balance heading-style-h2" v-else-if="this.accountState === 'NGN'">&#8358;0</div>-->
 <!--    <div class="balance heading-style-h2" >&#8358;0.00</div>-->
 

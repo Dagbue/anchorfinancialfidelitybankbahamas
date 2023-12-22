@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-alpha">
-      <form @submit.prevent="initiateEnrollment">
+      <form @submit.prevent="handleSubmit">
 
         <div class="input-form-2">
           <!--          <label>Full name</label>-->
@@ -21,7 +21,7 @@
 
         <div class="input-form-2">
           <!--          <label>Email address</label>-->
-          <input type="email"  placeholder="Email address"  class="input-form-1" required="required"/>
+          <input type="email"  placeholder="Email address" v-model="email"  class="input-form-1" required="required"/>
         </div>
 
         <div  class="input-form-2">
@@ -31,8 +31,8 @@
 
         <div class="has-addons">
           <!--          <label>Create Passcode</label>-->
-          <input @input="validatePassword" v-if="showPassword" v-model="userPassword"   type="text" class="input-form-1 password"   placeholder="Create Passcode" />
-          <input @input="validatePassword" v-else type="password" v-model="userPassword"  class="input-form-1  password"  placeholder="Create Passcode"   >
+          <input @input="validatePassword" v-if="showPassword" v-model="password"   type="text" class="input-form-1 password"   placeholder="Create Passcode" />
+          <input @input="validatePassword" v-else type="password" v-model="password"  class="input-form-1  password"  placeholder="Create Passcode"   >
           <div class="space" @click="toggleShow">
             <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }" ></i>
           </div>
@@ -326,6 +326,13 @@
 </template>
 
 <script>
+import {ref} from "vue";
+import {useStore} from "vuex";
+import { useRouter } from 'vue-router'
+import {sendEmailVerification} from "firebase/auth";
+import {doc, setDoc,} from "firebase/firestore";
+import { set, push, } from "firebase/database";
+import Swal from "sweetalert2";
 export default {
   name: "CreateAccountEmail",
   data(){
@@ -337,6 +344,46 @@ export default {
       passwordErrors: [],
     }
   },
+
+  setup() {
+    const email = ref('')
+    const password = ref('')
+    const url = ref(null)
+    const file = ref(null)
+    const filepath = ref(null)
+    const error = ref(null)
+
+    const store = useStore()
+    const router = useRouter()
+
+
+    const handleSubmit = async () => {
+      try {
+        await store.dispatch('signup', {
+          email: email.value,
+          password: password.value,
+        });
+        await router.push('/signUpDetails')
+      }
+      catch (err) {
+        error.value = err.message
+        await Swal.fire({
+          icon: 'error',
+          title: 'error',
+          text: err.message,
+        });
+      }
+    };
+
+
+    return {
+      email, password,
+      url,filepath,file,
+      handleSubmit, error,
+      set, push, ref, sendEmailVerification,
+      setDoc, doc
+    }
+  },
   methods:{
     toggleShow() {
       this.showPassword = !this.showPassword;
@@ -345,25 +392,18 @@ export default {
       this.showPassword2 = !this.showPassword2;
     },
 
-
-
-    initiateEnrollment(event){
-      this.validatePassword();
-      if (this.passwordErrors.length > 0) {
-        event.preventDefault(); // Prevent form submission
-        // eslint-disable-next-line no-undef
-        swal('Error', 'Please fix the errors with the password before submitting again.', 'error')
-      } else {
-        // StoreUtils.dispatch(StoreUtils.actions.auth.initiateEnrollment, this.model)
-        // StoreUtils.commit(StoreUtils.mutations.auth.updateSignUpFormData, {
-        //   userEmail: this.model.userEmail,
-        //   userFullName: this.model.userFullName,
-        //   userPassword: this.model.userPassword,
-        // })
-        this.$router.push("/signUpDetails");
-        window.scrollTo(0, 0);
-      }
-    },
+    // initiateEnrollment(event){
+    //   this.validatePassword();
+    //   if (this.passwordErrors.length > 0) {
+    //     event.preventDefault(); // Prevent form submission
+    //     // eslint-disable-next-line no-undef
+    //     swal('Error', 'Please fix the errors with the password before submitting again.', 'error')
+    //   } else {
+    //
+    //     this.$router.push("/signUpDetails");
+    //     window.scrollTo(0, 0);
+    //   }
+    // },
 
     logIn(){
       this.$router.push("/loginWithEmail");

@@ -37,7 +37,7 @@
           <div class="email-wrapper">
             <label for="name-5">Address</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5">-->
-            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Address}}</p>
+            <p style="height: 100%;" class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Address}}</p>
           </div>
           <div class="email-wrapper">
             <label for="name-4">City</label>
@@ -82,7 +82,7 @@
           <div class="email-wrapper">
             <label for="name-5">Address</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5">-->
-            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Address2}}</p>
+            <p style="height: 100%;" class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Address2}}</p>
           </div>
           <div class="email-wrapper">
             <label for="name-4">City</label>
