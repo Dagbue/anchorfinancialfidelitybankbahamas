@@ -13,8 +13,8 @@
       <div class="group">
         <span class="fa-stack fa-2x"><em class="fas fa-circle fa-stack-2x text-tertiary circle-icon"></em><em class="fas fa-money-check-edit-alt fa-stack-1x fa-inverse icon-size"></em></span>
         <p class="group-text">Service</p>
-        <p class="group-text-1">We know that you need a Cayman Union you can count on, so our employees live by the
-          motto “Service before self.”</p>
+        <p class="group-text-1">We know that you need a Bank you can count on, so our employees live by the
+          motto “People's best choice.”</p>
       </div>
 
       <div class="group">

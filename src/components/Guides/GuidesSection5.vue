@@ -20,7 +20,7 @@
           Send your payment and loan coupon at least one week before your due date to:
         </p>
         <p class="text-3" style="padding-top: 15px; font-weight: 900;">
-          AFFCU<br/>
+          AFFBB<br/>
           Attn: Payment Processing<br/>
           N 3036, Key West Street &,<br/>
           Robinson Rd, Nassau, Bahamas

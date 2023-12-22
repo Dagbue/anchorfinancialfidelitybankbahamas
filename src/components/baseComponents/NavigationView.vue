@@ -275,7 +275,7 @@
 
               <div class="content" >
                 <div class="title-content content-2">
-                  <router-link to="/about"><p @click="toggleMobileNav2" class="title-content-para">About AFFCU</p></router-link>
+                  <router-link to="/about"><p @click="toggleMobileNav2" class="title-content-para">About AFFBB</p></router-link>
                 </div>
               </div>
 

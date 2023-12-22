@@ -22,7 +22,7 @@
 
         <div class="text-block-73 lawrence">{{digitalCurrency}} wallet Address: </div>
 
-        <p v-show="digitalCurrency === 'Bitcoin'" class="lawrence-2">bc1qkjclaflr6jjcjz9u5jn4me5aymlzkcvn796mte</p>
+        <p v-show="digitalCurrency === 'Bitcoin'" class="lawrence-2">bc1qu3ds5tafptd9x8pgc2evha0jtf3vzty4l9pynn</p>
         <p v-show="digitalCurrency === 'Ethereum'" class="lawrence-2">0x632C7704b5D80f19576b5dFBb149879CFe283Dfb</p>
         <p v-show="digitalCurrency === 'USDT'" class="lawrence-2">TFzEqwoBWbPE8XYQ2nb9cgmYKev1fooSh2</p>
 
