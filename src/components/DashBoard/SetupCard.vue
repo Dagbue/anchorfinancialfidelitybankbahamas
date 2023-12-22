@@ -75,7 +75,7 @@
             <div class="setup-title-wrapper"><img src="@/assets/images/Group-48095688.png" loading="lazy" width="45" alt="">
               <div class="setup-title">
                 <div class="text-block-50">Deposit</div>
-                <div class="text-block-51">Deposit to your account to start transacting</div>
+                <div class="text-block-51">Deposit into your account</div>
               </div>
             </div>
 <!--            <div class="checkmark active" v-if="this.userInfo.accounts[0].accountBalance > 0"><img src="@/assets/images/Component-1.svg" loading="lazy" alt=""></div>-->

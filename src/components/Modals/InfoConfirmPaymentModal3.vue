@@ -18,7 +18,7 @@
         <div class="text-block-73 lawrence">Please send desired {{digitalCurrency}} amount (without network send fee)</div>
 
         <div style="color: #db657b" class="text-block-73 lawrence">Please do not send {{digitalCurrency}} to this address after address is
-          expired, we cant receiving money after address is expired.</div>
+          expired, we can't receive money after address is expired.</div>
 
         <div class="text-block-73 lawrence">{{digitalCurrency}} wallet Address: </div>
 

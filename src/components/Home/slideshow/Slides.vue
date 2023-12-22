@@ -19,7 +19,7 @@
           <div class="slideTitle-section-2">
             <img v-show="this.image.id === 0" src="@/assets/AutumnCouple.jpg" alt="slide_show_image" class="slider-image"/>
 
-            <img v-show="this.image.id === 1" src="@/assets/Woman-credit-card.jpeg" alt="slide_show_image" class="slider-image"/>
+            <img v-show="this.image.id === 1" src="https://images.unsplash.com/photo-1633381664938-acd1bdf25770?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTF8fEFUTSUyMGNhcmR8ZW58MHx8MHx8fDA%3D" alt="slide_show_image" class="slider-image-1"/>
 
             <img v-show="this.image.id === 2" src="@/assets/airport-couple.jpeg" alt="slide_show_image" class="slider-image"/>
           </div>
@@ -144,6 +144,14 @@ export default {
 
 .slider-image{
   width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+.slider-image-1{
+  width: 80%;
   display: block;
   margin-left: auto;
   margin-right: auto;

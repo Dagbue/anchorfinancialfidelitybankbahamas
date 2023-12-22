@@ -2,7 +2,7 @@
   <div class="alpha">
     <div class="content-alpha">
 
-      <p class="text-1">About AFFCU</p>
+      <p class="text-1">About AFFBB</p>
 
     </div>
   </div>

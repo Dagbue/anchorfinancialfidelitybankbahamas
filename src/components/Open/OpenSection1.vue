@@ -32,7 +32,7 @@
         <div class="lawrence">
           <em class="fas fa-caret-right"></em>
           <p class="text-3">
-            <span style="font-weight: 900; color: black;">Digital Wallet : </span>
+<!--            <span style="font-weight: 900; color: black;">Digital Wallet : </span>-->
             Your complete physical and mailing address (and previous address if at current address less than two years)
           </p>
         </div>
@@ -40,7 +40,7 @@
         <div class="lawrence">
           <em class="fas fa-caret-right"></em>
           <p class="text-3">
-            <span style="font-weight: 900; color: black;">Card Controls : </span>
+            <span style="font-weight: 900; color: black;">Card Control : </span>
             Information for funding your new account (credit card or debit card)
           </p>
         </div>
@@ -48,7 +48,7 @@
         <div class="lawrence">
           <em class="fas fa-caret-right"></em>
           <p class="text-3">
-            <span style="font-weight: 900; color: black;">Card Controls : </span>
+<!--            <span style="font-weight: 900; color: black;">Card Controls : </span>-->
             Your Social Security Number
           </p>
         </div>
@@ -56,7 +56,7 @@
         <div class="lawrence">
           <em class="fas fa-caret-right"></em>
           <p class="text-3">
-            <span style="font-weight: 900; color: black;">Card Controls : </span>
+<!--            <span style="font-weight: 900; color: black;">Card Controls : </span>-->
             If applying for a joint membership/account, the secondary applicant's information
           </p>
         </div>

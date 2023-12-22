@@ -20,7 +20,7 @@
       </div>
 
       <div class="content-2">
-        <img src="@/assets/woman-lying-on-bed-debit-card.jpg" alt="section-1-image" class="image"/>
+        <img src="@/assets/smiling-woman-with-laptop.jpg" alt="section-1-image" class="image"/>
       </div>
 
     </div>

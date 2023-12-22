@@ -40,15 +40,29 @@
             <p style="height: 100%;" class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Address}}</p>
           </div>
           <div class="email-wrapper">
+            <label for="name-4">State</label>
+            <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
+            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.state1}}</p>
+
+          </div>
+
+          <div class="email-wrapper">
             <label for="name-4">City</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
             <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.City}}</p>
 
           </div>
+
           <div class="email-wrapper">
             <label for="name-7">Zip Code</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
             <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Zip}}</p>
+          </div>
+
+          <div class="email-wrapper">
+            <label for="name-7">Country</label>
+            <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
+            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">USA</p>
           </div>
           <div class="notice">
             <label for="name-7" class="field-label-2">NOTE:</label>
@@ -85,6 +99,12 @@
             <p style="height: 100%;" class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Address2}}</p>
           </div>
           <div class="email-wrapper">
+            <label for="name-4">State</label>
+            <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
+            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.state2}}</p>
+
+          </div>
+          <div class="email-wrapper">
             <label for="name-4">City</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
             <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.City2}}</p>
@@ -94,6 +114,11 @@
             <label for="name-7">Zip Code</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
             <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.Zip2}}</p>
+          </div>
+          <div class="email-wrapper">
+            <label for="name-7">Country</label>
+            <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
+            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">USA</p>
           </div>
           <div class="notice">
             <label for="name-7" class="field-label-2">NOTE:</label>
@@ -162,6 +187,8 @@ export default {
         'DOB2': doc.data().DOB2,
         'SSN1': doc.data().SSN1,
         'SSN2': doc.data().SSN2,
+        'state1': doc.data().state1,
+        'state2': doc.data().state2,
       }
       this.contacts = data
     })

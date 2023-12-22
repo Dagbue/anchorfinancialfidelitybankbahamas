@@ -18,7 +18,7 @@
       </div>
 
       <div class="content-2">
-        <img src="@/assets/Laptop-and-iPhone.jpeg" alt="section-1-image" class="image"/>
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFzaGJvYXJkfGVufDB8fDB8fHww" alt="section-1-image" class="image"/>
       </div>
 
     </div>

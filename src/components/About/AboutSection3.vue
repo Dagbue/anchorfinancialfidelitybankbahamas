@@ -18,7 +18,7 @@
       </div>
 
       <div class="content-2">
-        <img src="@/assets/office.jpeg" alt="section-1-image" class="image"/>
+        <img src="@/assets/woman-using-laptop-and-card.jpg" alt="section-1-image" class="image"/>
       </div>
 
     </div>

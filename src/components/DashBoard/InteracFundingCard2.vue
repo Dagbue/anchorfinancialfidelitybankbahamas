@@ -6,7 +6,7 @@
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
       </router-link>
     </div>
-    <h4>Follow the instructions below to fund your AFFCU Bank Account using Digital Currency</h4>
+    <h4>Follow the instructions below to fund your AFFBB Bank Account using Digital Currency</h4>
     <div class="margin-top margin-medium">
       <!--            <div class="interac-funding-steps">-->
       <!--              <div class="margin-bottom margin-small">-->

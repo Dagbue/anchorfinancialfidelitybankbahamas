@@ -101,7 +101,7 @@
               <i class='bx bxs-chevron-down'></i>
               <div v-if="showDropdown" class="dropdown-content">
                 <router-link  to="/about">
-                  About AFFCU
+                  About AFFBB
                   <i class='bx bxs-chevron-right'></i>
                 </router-link>
                 <router-link  to="/contactView">Contact Us<i class='bx bxs-chevron-right'></i></router-link>

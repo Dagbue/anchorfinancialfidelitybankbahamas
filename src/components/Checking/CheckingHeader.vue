@@ -19,7 +19,7 @@
       </div>
 
       <div class="content-2">
-        <img src="@/assets/Woman-credit-card.jpeg" alt="section-1-image" class="image"/>
+        <img src="https://images.unsplash.com/photo-1633381664938-acd1bdf25770?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTF8fEFUTSUyMGNhcmR8ZW58MHx8MHx8fDA%3D" alt="section-1-image" class="image"/>
       </div>
 
     </div>
@@ -65,7 +65,7 @@ export default {
 }
 
 .image{
-  width: 90%;
+  width: 80%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -183,7 +183,9 @@ export default {
 }
 
 @media (max-width: 500px) {
-
+  .image{
+    width: 92%;
+  }
 }
 
 </style>
