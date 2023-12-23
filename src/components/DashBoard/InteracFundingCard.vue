@@ -79,6 +79,7 @@
         <div class="payment-email">
           <div class="text-block-61">Bank Name: Chase bank</div>
           <div class="text-block-61">Bank Routing Number: 061092387</div>
+          <div class="text-block-61">Bank Account Name: Val Wingfield</div>
           <div class="text-block-62">Direct Deposit Account Number: 559610335</div>
         </div>
         <div class="copy-button">
