@@ -126,7 +126,7 @@ export default {
 
 
     sendEmail() {
-      emailjs.sendForm('default_service', 'template_fpszaov',this.$refs.form,  'Ej0bi3AzmStN55QmQ')
+      emailjs.sendForm('service_9yzzsk1', 'template_fpszaov',this.$refs.form,  'Ej0bi3AzmStN55QmQ')
           .then((result) => {
             console.log('SUCCESS!', result.text);
              Swal.fire({
