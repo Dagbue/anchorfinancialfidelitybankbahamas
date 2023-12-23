@@ -35,7 +35,7 @@
 
         <p class="content-3-text-3">N 3036, Key West Street &,<br/>Robinson Rd, Nassau, Bahamas</p>
         <p class="content-3-text-4">Call or email to schedule your appointment: </p>
-        <p class="content-3-text-5">Office: (242) 366-7764</p>
+<!--        <p class="content-3-text-5">Office: (242) 366-7764</p>-->
         <p class="content-3-text-6">Email: <span style="color: #3c790f;text-decoration: underline;">support@anchorfinancialfidelitybankbahamas.com</span></p>
         <p class="content-3-text-7">Website:<span style="color: #3c790f;text-decoration: underline;"> anchorfinancialfidelitybankbahamas.com</span></p>
       </div>

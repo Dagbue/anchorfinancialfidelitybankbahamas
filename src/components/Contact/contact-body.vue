@@ -14,7 +14,7 @@
             N 3036, Key West Street &,
             Robinson Rd, Nassau, Bahamas
           </p>
-          <p class="contact-text-para-3">Telephone: +1 (242) 366-7764</p>
+<!--          <p class="contact-text-para-3">Telephone: +1 (242) 366-7764</p>-->
           <p class="contact-text-para-4">E-mail: support@anchorfinancialfidelitybankbahamas.com</p>
         </div>
 
