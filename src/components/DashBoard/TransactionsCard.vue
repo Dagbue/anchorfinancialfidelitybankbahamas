@@ -9,101 +9,101 @@
         </div>
       </div>
     </div>
-    <div v-show="this.userData === 'account1'"  class="transactions-wrapper padding-custom2">
+<!--    <div v-show="this.userData === 'account1'"  class="transactions-wrapper padding-custom2">-->
 
-<!--      <div v-if="this.contacts2.amount > 0"  class="transaction-state">-->
+<!--&lt;!&ndash;      <div v-if="this.contacts2.amount > 0"  class="transaction-state">&ndash;&gt;-->
 
-<!--        <div class="transactions _1 w-inline-block">-->
+<!--&lt;!&ndash;        <div class="transactions _1 w-inline-block">&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                  <div class="txn-details" style="justify-content: space-between" v-for="items in this.paginatedItems" :key="items.key">&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                  <div class="txn-details" style="justify-content: space-between" v-for="items in this.paginatedItems" :key="items.key">&ndash;&gt;&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                    <div class="separate-1">&ndash;&gt;-->
-<!--          &lt;!&ndash;                      <p>&ndash;&gt;-->
-<!--          &lt;!&ndash;                        <i class='bx bx-log-in-circle' v-if="items.drCr === 'CR'"></i>&ndash;&gt;-->
-<!--          &lt;!&ndash;                        <i class='bx bx-log-out-circle' v-if="items.drCr === 'DR'" ></i>&ndash;&gt;-->
-<!--          &lt;!&ndash;                      </p>&ndash;&gt;-->
-<!--          &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    <div class="separate-1">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                      <p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                        <i class='bx bx-log-in-circle' v-if="items.drCr === 'CR'"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                        <i class='bx bx-log-out-circle' v-if="items.drCr === 'DR'" ></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                      </p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                    <div class="separate-2">&ndash;&gt;-->
-<!--          &lt;!&ndash;                      <div class="name-text">{{userInfo.customerFirstName}} {{userInfo.customerLastName}}</div>&ndash;&gt;-->
-<!--          &lt;!&ndash;&lt;!&ndash;                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
-<!--          &lt;!&ndash;&lt;!&ndash;                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
-<!--          &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    <div class="separate-2">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                      <div class="name-text">{{userInfo.customerFirstName}} {{userInfo.customerLastName}}</div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;&lt;!&ndash;                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;&lt;!&ndash;                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                    <div class="separate-3">&ndash;&gt;-->
-<!--          &lt;!&ndash;                      <p class="amount-text" >{{ items.amount | formatAmount }}&ndash;&gt;-->
-<!--          &lt;!&ndash;                        <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;-->
-<!--          &lt;!&ndash;                        <span v-if="items.accountNumber === accountNaira">NG</span>&ndash;&gt;-->
-<!--          &lt;!&ndash;                      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    <div class="separate-3">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                      <p class="amount-text" >{{ items.amount | formatAmount }}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                        <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                        <span v-if="items.accountNumber === accountNaira">NG</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                      </p>&ndash;&gt;&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                    <div class="separate-3">&ndash;&gt;-->
-<!--          &lt;!&ndash;                      <p class="amount-text">{{items.eventDate | formatDate }}</p>&ndash;&gt;-->
-<!--          &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    <div class="separate-3">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                      <p class="amount-text">{{items.eventDate | formatDate }}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                  </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--          <table>-->
+<!--&lt;!&ndash;          <table>&ndash;&gt;-->
 
-<!--            <tbody>-->
-<!--            <tr >-->
-<!--              <td>-->
-<!--                <div class="separate-1">-->
-<!--                  <p>-->
-<!--&lt;!&ndash;                    <i class='bx bx-log-in-circle' ></i>&ndash;&gt;-->
-<!--                    <i class='bx bx-log-in-circle pending' ></i>-->
-<!--&lt;!&ndash;                    <i class='bx bx-log-out-circle'  ></i>&ndash;&gt;-->
-<!--                  </p>-->
-<!--                </div>-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                <div class="separate-2">-->
-<!--                  <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>-->
-<!--                  &lt;!&ndash;                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;-->
-<!--                  &lt;!&ndash;                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;-->
-<!--                </div>-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                <div class="separate-3">-->
-<!--                  <p class="amount-text" >&#36; {{formatNumber(this.contacts2.amount)}}.00-->
-<!--&lt;!&ndash;                    <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <span v-if="items.accountNumber === accountNaira">NG</span>&ndash;&gt;-->
-<!--                  </p>-->
+<!--&lt;!&ndash;            <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr >&ndash;&gt;-->
+<!--&lt;!&ndash;              <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="separate-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <p>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <i class='bx bx-log-in-circle' ></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i class='bx bx-log-in-circle pending' ></i>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <i class='bx bx-log-out-circle'  ></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                  </p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </td>&ndash;&gt;-->
+<!--&lt;!&ndash;              <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="separate-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  &lt;!&ndash;                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                  &lt;!&ndash;                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </td>&ndash;&gt;-->
+<!--&lt;!&ndash;              <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="separate-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <p class="amount-text" >&#36; {{formatNumber(this.contacts2.amount)}}.00&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <span v-if="items.accountNumber === accountNaira">NG</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                  </p>&ndash;&gt;-->
 
-<!--                </div>-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                <div class="separate-3">-->
-<!--                  <p class="amount-text">28th Dec 2023</p>-->
-<!--                </div>-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </td>&ndash;&gt;-->
+<!--&lt;!&ndash;              <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="separate-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <p class="amount-text">28th Dec 2023</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tbody>&ndash;&gt;-->
 
-<!--          </table>-->
+<!--&lt;!&ndash;          </table>&ndash;&gt;-->
 
-<!--          <div class="pagination">-->
-<!--            <button @click="previousPage" :disabled="currentPage === 1" class="previous">Previous</button>-->
-<!--            <div class="page-indicator">-->
-<!--              Page {{ currentPage }} of 1-->
-<!--            </div>-->
-<!--            <button @click="nextPage" :disabled="currentPage === totalPages" class="previous">Next</button>-->
-<!--          </div>-->
+<!--&lt;!&ndash;          <div class="pagination">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button @click="previousPage" :disabled="currentPage === 1" class="previous">Previous</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="page-indicator">&ndash;&gt;-->
+<!--&lt;!&ndash;              Page {{ currentPage }} of 1&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button @click="nextPage" :disabled="currentPage === totalPages" class="previous">Next</button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--      <section id="EmptyStateCard" class="empty-state">-->
+<!--        <img src="@/assets/images/Frame-162940.png" loading="lazy" width="40" alt="">-->
+<!--        <div class="margin-top margin-small">-->
+<!--          <div class="empty-state-text">You have no transaction yet. When you do, it&#x27;ll show up here.</div>-->
 <!--        </div>-->
+<!--      </section>-->
 
-<!--      </div>-->
+<!--    </div>-->
 
-      <section id="EmptyStateCard" class="empty-state">
-        <img src="@/assets/images/Frame-162940.png" loading="lazy" width="40" alt="">
-        <div class="margin-top margin-small">
-          <div class="empty-state-text">You have no transaction yet. When you do, it&#x27;ll show up here.</div>
-        </div>
-      </section>
-
-    </div>
-
-    <div v-show="this.userData === 'account2'" class="transactions-wrapper padding-custom2">
+    <div  class="transactions-wrapper padding-custom2">
 
       <div v-if="this.contacts2.amount > 0"  class="transaction-state">
 

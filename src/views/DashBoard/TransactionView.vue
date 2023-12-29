@@ -12,104 +12,104 @@
         <TransactionFilterCard/>
       </div>
 
-      <div v-show="this.userData === 'account1'">
-<!--        <div class="transaction-list-wrapper">-->
+<!--      <div v-show="this.userData === 'account1'">-->
+<!--&lt;!&ndash;        <div class="transaction-list-wrapper">&ndash;&gt;-->
 
-<!--          <div class="transaction-list" style=" margin-bottom: 7%;">-->
+<!--&lt;!&ndash;          <div class="transaction-list" style=" margin-bottom: 7%;">&ndash;&gt;-->
 
-<!--            <div class="transaction-list-content">-->
+<!--&lt;!&ndash;            <div class="transaction-list-content">&ndash;&gt;-->
 
 
-<!--              &lt;!&ndash;              <div class="txn-details transactions w-inline-block" v-for="items in this.paginatedItems" :key="items.key">&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;              <div class="txn-details transactions w-inline-block" v-for="items in this.paginatedItems" :key="items.key">&ndash;&gt;&ndash;&gt;-->
 
-<!--              &lt;!&ndash;                <div class="separate-1">&ndash;&gt;-->
-<!--              &lt;!&ndash;                  <p>&ndash;&gt;-->
-<!--              &lt;!&ndash;&lt;!&ndash;                    <img src="@/assets/images/outward.svg" loading="lazy" alt="">&ndash;&gt;&ndash;&gt;-->
-<!--              &lt;!&ndash;                    <i class='bx bx-log-in-circle' v-if="items.drCr === 'CR'"></i>&ndash;&gt;-->
-<!--              &lt;!&ndash;                    <i class='bx bx-log-out-circle' v-if="items.drCr === 'DR'" ></i>&ndash;&gt;-->
-<!--              &lt;!&ndash;                  </p>&ndash;&gt;-->
-<!--              &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                <div class="separate-1">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                  <p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;&lt;!&ndash;                    <img src="@/assets/images/outward.svg" loading="lazy" alt="">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                    <i class='bx bx-log-in-circle' v-if="items.drCr === 'CR'"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                    <i class='bx bx-log-out-circle' v-if="items.drCr === 'DR'" ></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                  </p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--              &lt;!&ndash;                <div class="separate-2">&ndash;&gt;-->
-<!--              &lt;!&ndash;                  <p class="name-text">{{userInfo.customerFirstName}} {{userInfo.customerLastName}}</p>&ndash;&gt;-->
-<!--              &lt;!&ndash;&lt;!&ndash;                  <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
-<!--              &lt;!&ndash;&lt;!&ndash;                  <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
-<!--              &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                <div class="separate-2">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                  <p class="name-text">{{userInfo.customerFirstName}} {{userInfo.customerLastName}}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;&lt;!&ndash;                  <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;&lt;!&ndash;                  <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--              &lt;!&ndash;                <div class="separate-3">&ndash;&gt;-->
-<!--              &lt;!&ndash;                  <p class="amount-text" >{{ items.amount | formatAmount }}&ndash;&gt;-->
-<!--              &lt;!&ndash;                    <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;-->
-<!--              &lt;!&ndash;                    <span v-if="items.accountNumber === accountNaira">NGN</span>&ndash;&gt;-->
-<!--              &lt;!&ndash;                  </p>&ndash;&gt;-->
-<!--              &lt;!&ndash;&lt;!&ndash;                  <p class="converted-amount-text">{{items.amount * convertRate | formatAmount}} NGN</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                <div class="separate-3">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                  <p class="amount-text" >{{ items.amount | formatAmount }}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                    <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                    <span v-if="items.accountNumber === accountNaira">NGN</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                  </p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;&lt;!&ndash;                  <p class="converted-amount-text">{{items.amount * convertRate | formatAmount}} NGN</p>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
-<!--              &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--              &lt;!&ndash;                <div class="separate-3">&ndash;&gt;-->
-<!--              &lt;!&ndash;                  <p class="amount-text" >{{items.eventDate | formatDate}}</p>&ndash;&gt;-->
-<!--              &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                <div class="separate-3">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                  <p class="amount-text" >{{items.eventDate | formatDate}}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;                </div>&ndash;&gt;&ndash;&gt;-->
 
-<!--              &lt;!&ndash;              </div>&ndash;&gt;-->
-<!--              <table>-->
+<!--&lt;!&ndash;              &lt;!&ndash;              </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              <table>&ndash;&gt;-->
 
-<!--                <tbody>-->
-<!--                <tr >-->
-<!--                  <td>-->
-<!--                    <div class="separate-1">-->
-<!--                      <p>-->
-<!--                        &lt;!&ndash;                    <i class='bx bx-log-in-circle' ></i>&ndash;&gt;-->
-<!--                        <i class='bx bx-log-in-circle pending' ></i>-->
-<!--                        &lt;!&ndash;                    <i class='bx bx-log-out-circle'  ></i>&ndash;&gt;-->
-<!--                      </p>-->
-<!--                    </div>-->
-<!--                  </td>-->
-<!--                  <td>-->
-<!--                    <div class="separate-2">-->
-<!--                      <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>-->
-<!--                      &lt;!&ndash;                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;-->
-<!--                    </div>-->
-<!--                  </td>-->
-<!--                  <td>-->
-<!--                    <div class="separate-3">-->
-<!--                      <p class="amount-text" >&#36; {{formatNumber(this.contacts2.amount)}}.00-->
-<!--                        &lt;!&ndash;                    <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;-->
-<!--                        &lt;!&ndash;                    <span v-if="items.accountNumber === accountNaira">NG</span>&ndash;&gt;-->
-<!--                      </p>-->
+<!--&lt;!&ndash;                <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr >&ndash;&gt;-->
+<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="separate-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p>&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;                    <i class='bx bx-log-in-circle' ></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        <i class='bx bx-log-in-circle pending' ></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;                    <i class='bx bx-log-out-circle'  ></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="separate-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      &lt;!&ndash;                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                      &lt;!&ndash;                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="separate-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p class="amount-text" >&#36; {{formatNumber(this.contacts2.amount)}}.00&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;                    <span v-if="items.accountNumber === accountCAD">CAD</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;                    <span v-if="items.accountNumber === accountNaira">NG</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                      </p>&ndash;&gt;-->
 
-<!--                    </div>-->
-<!--                  </td>-->
-<!--                  <td>-->
-<!--                    <div class="separate-3">-->
-<!--                      <p class="amount-text">28th Dec 2023</p>-->
-<!--                    </div>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="separate-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p class="amount-text">28th Dec 2023</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tbody>&ndash;&gt;-->
 
-<!--              </table>-->
+<!--&lt;!&ndash;              </table>&ndash;&gt;-->
 
-<!--              <div class="pagination">-->
-<!--                <button @click="previousPage" :disabled="currentPage === 1" class="previous">Previous</button>-->
-<!--                <div class="page-indicator">-->
-<!--                  Page {{ currentPage }} of 1-->
-<!--                </div>-->
-<!--                <button @click="nextPage" :disabled="currentPage === totalPages" class="previous">Next</button>-->
-<!--              </div>-->
+<!--&lt;!&ndash;              <div class="pagination">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button @click="previousPage" :disabled="currentPage === 1" class="previous">Previous</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="page-indicator">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Page {{ currentPage }} of 1&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button @click="nextPage" :disabled="currentPage === totalPages" class="previous">Next</button>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
 
-<!--            </div>-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
 
-<!--          </div>-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
 
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        <div class="empty-state">-->
+<!--          <img src="@/assets/images/Empty-Illustration.svg" loading="lazy" alt="">-->
+<!--          <div>You have no transactions yet!</div>-->
 <!--        </div>-->
+<!--      </div>-->
 
-        <div class="empty-state">
-          <img src="@/assets/images/Empty-Illustration.svg" loading="lazy" alt="">
-          <div>You have no transactions yet!</div>
-        </div>
-      </div>
-
-      <div v-show="this.userData === 'account2'">
+      <div >
         <div v-if="this.contacts2.amount > 0"  class="transaction-list-wrapper">
 
           <div class="transaction-list" style=" margin-bottom: 7%;">
