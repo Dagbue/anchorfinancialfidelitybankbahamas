@@ -162,6 +162,13 @@
                   </td>
                   <td>
                     <div class="separate-2">
+                      <div class="name-text">ExxonMobil</div>
+                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
+                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-2">
                       <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>
                       <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
                       <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
@@ -372,6 +379,10 @@ export default {
 }
 .name-text{
   text-transform: lowercase;
+  font-size: 12px;
+}
+.amount-text{
+  font-size: 11px;
 }
 
 .pagination{
@@ -456,11 +467,11 @@ td::first-letter {
     height: 31px;
   }
   .name-text {
-    font-size: 10.5px;
+    font-size: 10px;
     width: 100%;
   }
   .amount-text {
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 700;
     width: 100%;
   }
