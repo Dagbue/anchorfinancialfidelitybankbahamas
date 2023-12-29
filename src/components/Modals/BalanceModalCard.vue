@@ -20,7 +20,7 @@
               <div class="left-block"><img src="@/assets/images/KYC.svg" loading="lazy" alt="">
                 <div class="balance-details">
                   <div class="currency">{{this.contacts.AccountName1}}'s Account</div>
-                  <div class="balance-text">&#36; {{this.contacts.Balance1}}.00</div>
+                  <div class="balance-text">&#36; {{formatNumber(this.contacts.Balance1)}}.00</div>
                 </div>
               </div>
               <div class="currency-switch">
@@ -37,7 +37,7 @@
               <div class="left-block"><img src="@/assets/images/KYC.svg" loading="lazy" alt="">
                 <div class="balance-details">
                   <div class="currency">{{this.contacts.AccountName2}}'s Account</div>
-                  <div class="balance-text">&#36; {{this.contacts.Balance2}}.00</div>
+                  <div class="balance-text">&#36; {{formatNumber(this.contacts.Balance2)}}.00</div>
                 </div>
               </div>
 
@@ -107,6 +107,22 @@ export default {
     },
     fetchData2() {
       this.$store.dispatch('fetchUserData', this.userData3);
+    },
+    formatNumber(number) {
+      // Convert the number to a string
+      let numStr = String(number);
+
+      // Split the string into integer and decimal parts (if any)
+      const parts = numStr.split('.');
+      const integerPart = parts[0];
+
+      // Add commas for thousands and millions
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      // Join the integer and decimal parts (if any)
+      const formattedNumber = parts.length === 2 ? formattedIntegerPart + '.' + parts[1] : formattedIntegerPart;
+
+      return formattedNumber;
     },
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <section id="BalanceCard" class="balance-wrapper margin-top margin-large">
-    <div class="balance heading-style-h2" >&#36;{{this.contacts.Balance1 + this.contacts.Balance2}}.00</div>
+    <div class="balance heading-style-h2" >&#36;{{formatNumber(this.contacts.Balance1 + this.contacts.Balance2)}}.00</div>
 <!--    <div class="balance heading-style-h2" v-else-if="this.accountState === 'NGN'">&#8358;0</div>-->
 <!--    <div class="balance heading-style-h2" >&#8358;0.00</div>-->
 
@@ -17,7 +17,7 @@
 <!--    </a>-->
 
     <a data-w-id="b4a46994-6187-287f-f799-9f553a35b0df" href="#" @click="showDialog" class="link-block w-inline-block">
-      <img src="@/assets/images/checked.svg" loading="lazy" width="16" alt="">
+      <img src="@/assets/images/checked-pendding.svg" loading="lazy" width="16" alt="">
       <div v-show="this.userData === 'account1'" class="dropdown-text dashboard text-size-small text-weight-medium">Hi {{this.contacts.AccountName1}}</div>
       <div v-show="this.userData === 'account2'" class="dropdown-text dashboard text-size-small text-weight-medium">Hi {{this.contacts.AccountName2}}</div>
       <img src="@/assets/images/arrow-down.svg" loading="lazy" width="16" alt="">
@@ -80,6 +80,22 @@ export default {
     },
     showDialog() {
       this.dialogIsVisible = true;
+    },
+    formatNumber(number) {
+      // Convert the number to a string
+      let numStr = String(number);
+
+      // Split the string into integer and decimal parts (if any)
+      const parts = numStr.split('.');
+      const integerPart = parts[0];
+
+      // Add commas for thousands and millions
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      // Join the integer and decimal parts (if any)
+      const formattedNumber = parts.length === 2 ? formattedIntegerPart + '.' + parts[1] : formattedIntegerPart;
+
+      return formattedNumber;
     },
   },
 
