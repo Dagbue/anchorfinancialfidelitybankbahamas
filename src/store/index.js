@@ -16,7 +16,7 @@ const store = createStore({
     user: null,
     authIsReady: false,
     Approved: false,
-    userData: "account1",
+    userData: "account2",
     digitalCurrency: "",
   },
   mutations: {
