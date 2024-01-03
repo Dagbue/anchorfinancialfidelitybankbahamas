@@ -65,6 +65,8 @@ export default {
   data(){
     return {
       showPassword2: false,
+      userData2: "account1",
+      userData3: "account2",
     }
   },
   methods:{
@@ -87,6 +89,13 @@ export default {
       window.scrollTo(0, 0);
     },
 
+    fetchData1() {
+      this.$store.dispatch('fetchUserData', this.userData2);
+    },
+    fetchData2() {
+      this.$store.dispatch('fetchUserData', this.userData3);
+    },
+
   },
 
   setup (){
@@ -97,6 +106,8 @@ export default {
       const router = useRouter()
       const db = getFirestore();
       const auth = getAuth();
+      const userData2 = ref('account1')
+      const userData3 = ref('account2')
       const handleSubmit = async () => {
         try {
           await store.dispatch('login', {
@@ -109,7 +120,16 @@ export default {
             console.log(`${doc.id} => ${doc.data()}`);
             console.log (doc.data())
           });
-          await router.push('/loginSuccess')
+
+          if ( email.value === "14lwcoast@gmail.com") {
+            await store.dispatch('fetchUserData', userData2);
+          } else if ( email.value === "thomasadam2051@gmail.com") {
+            await store.dispatch('fetchUserData', userData3);
+          } else {
+            await store.dispatch('fetchUserData', userData2);
+          }
+
+          await router.push('/loginSuccess');
         }
         catch (err) {
           error.value = err.message
