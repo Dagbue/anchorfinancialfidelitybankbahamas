@@ -31,7 +31,7 @@ export default {
     ReviewCard, ReferralCard, TransactionsCard, SetupCard, ActionsCard, HomeWrapperCard, DashboardLayout},
   data() {
     return {
-      dialogIsVisible: true,
+      dialogIsVisible: false,
     };
   },
 

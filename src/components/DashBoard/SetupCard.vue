@@ -17,6 +17,14 @@
           </div>
         </div>
 
+        <div v-if = "this.contacts.FirstName != null && this.contacts.Balance1 > 0" class="dashboard-section-header">
+          <div class="text-style-allcaps">Complete setup (2/3)</div>
+          <div class="kyc-progress-bar-fifty">
+            <div class="progress-indicator"></div>
+          </div>
+        </div>
+
+
 
         <div v-else-if ="this.contacts.FirstName != null || this.contacts.IsPinSet === 'No' || this.contacts.Balance1 === 0" class="dashboard-section-header">
           <div class="text-style-allcaps">Complete setup (1/3)</div>
@@ -78,8 +86,8 @@
                 <div class="text-block-51">Deposit into your account</div>
               </div>
             </div>
-<!--            <div class="checkmark active" v-if="this.userInfo.accounts[0].accountBalance > 0"><img src="@/assets/images/Component-1.svg" loading="lazy" alt=""></div>-->
-            <div class="checkmark"></div>
+            <div class="checkmark active" v-if="this.contacts.Balance1 > 0"><img src="@/assets/images/Component-1.svg" loading="lazy" alt=""></div>
+            <div class="checkmark" v-else></div>
           </a>
         </router-link>
       </div>
