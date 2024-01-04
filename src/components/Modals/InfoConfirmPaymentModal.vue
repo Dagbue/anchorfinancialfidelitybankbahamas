@@ -8,13 +8,13 @@
 
         <div class="text-block-73 lawrence">Your Account is Limited</div>
 
-        <div class="text-block-72 lawrence">This action is not allowed at the moment.Please make a deposit to activate
-          account.</div>
+        <div class="text-block-72 lawrence">This action is not allowed at the moment.Your account activation is under
+          review please check back in 24hr.</div>
 
-        <div class="margin-top margin-medium">
-          <a href="#" @click="proceed"  class="button w-button">Make Deposit</a>
+<!--        <div class="margin-top margin-medium">-->
+<!--          <a href="#" @click="proceed"  class="button w-button">Make Deposit</a>-->
 <!--          <base-button :loading="loading">Proceed to KYC</base-button>-->
-        </div>
+<!--        </div>-->
         <div class="margin-top margin-small">
           <a href="#" @click="$emit('close')" class="button is-secondary w-button">Cancel</a>
         </div>
