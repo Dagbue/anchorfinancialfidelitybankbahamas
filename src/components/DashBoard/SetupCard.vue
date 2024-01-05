@@ -10,14 +10,14 @@
           </div>
         </div>
 
-        <div v-if = "this.contacts.FirstName != null && this.contacts.IsPinSet === 'Yes'" class="dashboard-section-header">
+        <div v-else-if = "this.contacts.FirstName != null && this.contacts.IsPinSet === 'Yes'" class="dashboard-section-header">
           <div class="text-style-allcaps">Complete setup (2/3)</div>
           <div class="kyc-progress-bar-fifty">
             <div class="progress-indicator"></div>
           </div>
         </div>
 
-        <div v-if = "this.contacts.FirstName != null && this.contacts.Balance1 > 0" class="dashboard-section-header">
+        <div v-else-if = "this.contacts.FirstName != null && this.contacts.Balance1 > 0" class="dashboard-section-header">
           <div class="text-style-allcaps">Complete setup (2/3)</div>
           <div class="kyc-progress-bar-fifty">
             <div class="progress-indicator"></div>

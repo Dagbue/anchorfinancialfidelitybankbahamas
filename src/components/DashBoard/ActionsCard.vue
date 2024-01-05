@@ -12,7 +12,7 @@
         <p class="action-button-text">Deposit</p>
       </div>
 
-      <div class="section-2" @click="showDialog2">
+      <div class="section-2" @click="transfer">
         <img src="@/assets/images/transfer_1transfer.png" loading="lazy" width="20" alt="" >
         <p class="action-button-text">Transfer</p>
       </div>

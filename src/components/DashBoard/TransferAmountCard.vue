@@ -8,6 +8,7 @@
       <div class="text-block-54">Enter the amount you want to send</div>
     </div>
     <confirm-payment-modal @close="hideDialog" v-if="dialogIsVisible"/>
+    <info-confirm-payment-modal4 @close="hideDialog2" v-if="dialogIsVisible2"/>
     <div class="margin-top margin-large">
       <div class="amount-wrapper">
         <div class="currency-converter">
@@ -18,19 +19,19 @@
               </div>
               <div class="right-block">
                 <!--                        <div class="text-balance">Balance: 0 CAD</div>-->
-                <div class="text-balance">Balance:0 USD</div>
+                <div class="text-balance">Balance: {{formatNumber(this.contacts.Balance1 + this.contacts.Balance2)}}.00 USD</div>
                 <!--                        <div class="text-balance" v-else >Balance: {{ userInfo.accounts[1].accountBalance | formatAmount }} NGN</div>-->
               </div>
             </div>
           </div>
           <div class="amount-input-wrapper">
             <div class="amount-field-wrapper">
-              <input type="number" v-model="amountNGN" @input="convertNGNtoCAD" class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required=""></div>
+              <input type="number" v-model="amountNGN"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required=""></div>
             <div class="right-block">
               <div data-hover="false" data-delay="0" class="dropdown-2 w-dropdown">
                 <div class="dropdown-toggle-2 w-dropdown-toggle">
                   <!--                          <div class="icon-2 w-icon-dropdown-toggle"></div>-->
-                  <div class="text-block-68">NGN</div>
+                  <div class="text-block-68">USD</div>
                 </div>
                 <nav class="dropdown-list-2 w-dropdown-list">
                   <a href="#" class="dropdown-link w-dropdown-link">🇨🇦 CAD</a>
@@ -60,11 +61,11 @@
           <!--                <input type="number" v-model="pins[5]" maxlength="1" @keyup="handleKeyUp($event, 3)" @keydown="handleKeyDown($event, 5)" required="required">-->
         </div>
 
-        <input type="text" v-model="note" class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Add note" id="field-3" required="">
+        <input type="text" v-model="note" class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Add note (optional)" id="field-3" />
       </div>
 
       <div class="margin-top margin-medium" >
-        <a data-w-id="49543b81-3e63-ef35-1c90-87e3c23665d2" href="#" @click="showDialog"  class="button w-button">Proceed</a>
+        <a data-w-id="49543b81-3e63-ef35-1c90-87e3c23665d2" href="#" @click="showDialog2"  class="button w-button">Proceed</a>
       </div>
 
 
@@ -75,20 +76,25 @@
 
 <script>
 import ConfirmPaymentModal from "@/components/Modals/ConfirmPaymentModal.vue";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "@/firebase/config";
+import InfoConfirmPaymentModal4 from "@/components/Modals/InfoConfirmPaymentModal4.vue";
 
 export default {
   name: "TransferAmountCard",
-  components: {ConfirmPaymentModal},
+  components: {InfoConfirmPaymentModal4, ConfirmPaymentModal},
   data() {
     return {
       amountCAD: "",
       amountNGN: "",
       note:"",
       dialogIsVisible: false,
+      dialogIsVisible2: false,
       randomString: "",
       // model: new FundTransferRequest().fundsTransferNGNNaira,
       showPassword: false,
       pins: [],
+      contacts: [],
     };
   },
 
@@ -110,6 +116,22 @@ export default {
   },
 
   methods: {
+    formatNumber(number) {
+      // Convert the number to a string
+      let numStr = String(number);
+
+      // Split the string into integer and decimal parts (if any)
+      const parts = numStr.split('.');
+      const integerPart = parts[0];
+
+      // Add commas for thousands and millions
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      // Join the integer and decimal parts (if any)
+      const formattedNumber = parts.length === 2 ? formattedIntegerPart + '.' + parts[1] : formattedIntegerPart;
+
+      return formattedNumber;
+    },
     hideDialog() {
       this.dialogIsVisible = false;
     },
@@ -135,6 +157,7 @@ export default {
     showDialog2() {
       this.dialogIsVisible2 = true;
     },
+
     hideDialog3() {
       this.dialogIsVisible3 = false;
     },
@@ -192,8 +215,26 @@ export default {
     },
   },
 
-  created() {
-    // StoreUtils.rootGetters(StoreUtils.getters.rate.getActiveRate);
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+      }
+      this.contacts = data
+    })
   },
 
   async mounted() {

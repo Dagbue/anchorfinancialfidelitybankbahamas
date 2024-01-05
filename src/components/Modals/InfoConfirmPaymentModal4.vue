@@ -6,15 +6,14 @@
         <!--            <div class="text-block-73 lawrence">Kindly complete the KYC process to proceed with Payment</div>-->
         <div class="image-wrapper"><img src="@/assets/images/clock.png" loading="lazy" width="161" alt=""></div>
 
-        <div class="text-block-73 lawrence">Your Account is Limited</div>
+        <div class="text-block-73 lawrence">Insufficient Balance</div>
 
-        <div class="text-block-72 lawrence">This action is not allowed at the moment.please upgrade your account to
-          activate this feature.</div>
+        <div class="text-block-72 lawrence"> </div>
 
-<!--        <div class="margin-top margin-medium">-->
-<!--          <a href="#" @click="proceed"  class="button w-button">Make Deposit</a>-->
-<!--          <base-button :loading="loading">Proceed to KYC</base-button>-->
-<!--        </div>-->
+        <!--        <div class="margin-top margin-medium">-->
+        <!--          <a href="#" @click="proceed"  class="button w-button">Make Deposit</a>-->
+        <!--          &lt;!&ndash;          <base-button :loading="loading">Proceed to KYC</base-button>&ndash;&gt;-->
+        <!--        </div>-->
         <div class="margin-top margin-small">
           <a href="#" @click="$emit('close')" class="button is-secondary w-button">Cancel</a>
         </div>
@@ -25,7 +24,7 @@
 
 <script>
 export default {
-  name: "InfoConfirmPaymentModal",
+  name: "InfoConfirmPaymentModal4",
   emits: ['close'],
   computed: {
 
@@ -47,6 +46,7 @@ li {display: inline-block; margin: 0 10px; }
 
 
 .lawrence{
+  text-transform: lowercase;
   text-align: center;
 }
 
