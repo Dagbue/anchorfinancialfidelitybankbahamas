@@ -3,7 +3,7 @@
     <div class="add-money-wrapper">
       <div>
         <div class="text-block-58">Send money</div>
-        <div class="text-block-59">Send money from your AFFCU account</div>
+        <div class="text-block-59">Move money from your AFFBB Joint offshore account</div>
       </div>
       <div>
         <img src="@/assets/images/dollar-transfer-1.png" loading="lazy" width="124" alt="" class="send-money">
