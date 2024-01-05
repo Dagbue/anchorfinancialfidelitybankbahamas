@@ -1,5 +1,6 @@
 <template>
   <section id="SendToBeneficiaryCard" class="margin-top margin-medium">
+    <info-confirm-payment-modal  @close="hideDialog2" v-if="dialogIsVisible2"/>
     <input type="text" class="input-field w-input" maxlength="256" name="field" data-name="Field" placeholder="Search beneficiary" id="field" required="">
     <router-link to="/addRecipientView">
       <a class="link-block-3 w-inline-block beneficiary-list">
@@ -10,12 +11,39 @@
         </div>
       </a>
     </router-link>
+
+    <router-link to="">
+      <a class="link-block-3 w-inline-block beneficiary-list" @click="showDialog2">
+        <img src="@/assets/images/add.svg" loading="lazy" alt="">
+        <div class="text-block-63 ">
+        Digital currency Trade platform
+          <p class="lawence" style="color: rgba(219,101,123,0.6);">Trade, Send or withdraw various digital currencies through our P2P service</p>
+        </div>
+      </a>
+    </router-link>
+
   </section>
 </template>
 
 <script>
+import InfoConfirmPaymentModal from "@/components/Modals/InfoConfirmPaymentModal.vue";
+
 export default {
-  name: "SendToBeneficiaryCard"
+  name: "SendToBeneficiaryCard",
+  components: {InfoConfirmPaymentModal},
+  data() {
+    return {
+      dialogIsVisible2: false,
+    };
+  },
+  methods: {
+    hideDialog2() {
+      this.dialogIsVisible2 = false;
+    },
+    showDialog2() {
+      this.dialogIsVisible2 = true;
+    },
+  }
 }
 </script>
 
