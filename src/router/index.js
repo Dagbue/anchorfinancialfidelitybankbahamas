@@ -218,6 +218,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/TransferAmountView.vue'),
     meta: { hideNavigation: true }
   },
+  {
+    path: '/peerToPeerView',
+    name: 'peerToPeerView',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/PeerToPeerView.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/peerToPeerView2',
+    name: 'peerToPeerView2',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/PeerToPeerView2.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/spotView',
+    name: 'spotView',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/SpotView.vue'),
+    meta: { hideNavigation: true }
+  },
 
 ]
 
