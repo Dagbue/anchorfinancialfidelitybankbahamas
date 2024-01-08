@@ -12,7 +12,7 @@
       </a>
     </router-link>
 
-    <router-link to="/peerToPeerView">
+    <router-link to="">
       <a class="link-block-3 w-inline-block beneficiary-list" @click="showDialog2">
         <img src="@/assets/images/add.svg" loading="lazy" alt="">
         <div class="text-block-63 ">
