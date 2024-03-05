@@ -236,6 +236,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/SpotView.vue'),
     meta: { hideNavigation: true }
   },
+  {
+    path: '/orderDetail',
+    name: 'orderDetail',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/OrderDetail.vue'),
+    meta: { hideNavigation: true }
+  },
 
 ]
 

@@ -2950,8 +2950,8 @@ figcaption {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  /*grid-column-gap: 16px;*/
+  /*grid-row-gap: 16px;*/
 }
 
 .right-block {
@@ -2963,8 +2963,8 @@ figcaption {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  /*grid-column-gap: 16px;*/
+  /*grid-row-gap: 16px;*/
 }
 
 .text-block-55 {

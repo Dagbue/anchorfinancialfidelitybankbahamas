@@ -1,5 +1,7 @@
 <template>
   <div class="dashboard-body-wrapper align-center">
+    <deposit-modal @close="hideDialog2" v-if="dialogIsVisible2" />
+    <withdrawal-modal @close="hideDialog3" v-if="dialogIsVisible3" />
     <div class="kyc-nav-wrapper margin-vertical margin-large">
       <router-link to="/sendMoneyView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
@@ -12,7 +14,7 @@
           <!--            <div class="margin-bottom margin-medium">-->
           <!--              <h3>Settings</h3>-->
           <!--            </div>-->
-          <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
+
 
             <div style="display: flex; justify-content: center; margin-right: 11%;" class="tabs-menu w-tab-menu">
               <router-link to="/peerToPeerView">
@@ -28,20 +30,19 @@
             </div>
 
 
-          </div>
 
 
           <div class="wallet-alpha">
 
             <div>
               <p class="text-1">Estimated Balance</p>
-              <p class="text-2">0.00002539 BTC</p>
+              <p class="text-2">0.00 BTC</p>
               <p class="text-3">Today‘s PnL + $0.00(0.00%)</p>
             </div>
 
             <div class="action">
-              <p class="action-btn">Deposit</p>
-              <p class="action-btn">Withdrawal</p>
+              <p class="action-btn" @click="showDialog2">Deposit</p>
+              <p class="action-btn" @click="showDialog3">Withdrawal</p>
             </div>
 
           </div>
@@ -60,12 +61,18 @@
 </template>
 
 <script>
+import DepositModal from "@/components/Modals/DepositModal.vue";
+import WithdrawalModal from "@/components/Modals/WithdrawalModal.vue";
+
 export default {
   name: "SpotCard",
+  components: {WithdrawalModal, DepositModal},
   data() {
     return {
       currentPage: 1,
       itemsPerPage: 12,
+      dialogIsVisible2: false,
+      dialogIsVisible3: false,
     };
   },
   computed: {
@@ -81,6 +88,20 @@ export default {
     // },
   },
   methods: {
+    hideDialog2() {
+      this.dialogIsVisible2 = false;
+    },
+    showDialog2() {
+      this.dialogIsVisible2 = true;
+    },
+
+    hideDialog3() {
+      this.dialogIsVisible3 = false;
+    },
+    showDialog3() {
+      this.dialogIsVisible3 = true;
+    },
+
     previousPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
@@ -109,7 +130,7 @@ export default {
   display: -ms-flexbox;
   display: flex;
   max-width: 550px;
-  margin-top: 3rem;
+  /*margin-top: 3rem;*/
   margin-right: auto;
   margin-left: auto;
   -webkit-box-orient: vertical;
@@ -162,7 +183,7 @@ export default {
   justify-content: space-between;
   border: 1px solid #E3EBF6;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 
 .action{
@@ -173,9 +194,9 @@ export default {
   background-color: #1a1d27;
   border-radius: 5px;
   color: #FFFFFF;
-  padding: 3px 20px;
+  padding: 10px 25px;
   margin-left: 5px;
-  margin-right: 5px;
+  /*margin-right: 5px;*/
 }
 
 .text-1{
@@ -210,15 +231,15 @@ export default {
   }
 
   .action{
-    padding-top: 5%;
-    padding-bottom: 4%;
+    padding-top: 9%;
+    padding-bottom: 3%;
   }
 
   .action-btn{
     background-color: #1a1d27;
     border-radius: 5px;
     color: #FFFFFF;
-    padding: 10px 30px;
+    padding: 8px 30px;
     margin-left: unset;
     margin-right: 5px;
   }

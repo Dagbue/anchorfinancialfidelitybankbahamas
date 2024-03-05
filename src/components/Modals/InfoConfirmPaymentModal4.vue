@@ -8,7 +8,12 @@
 
 <!--        <div class="text-block-73 lawrence">Insufficient Balance</div>-->
 
-        <div class="text-block-73 lawrence">Account Maturity date not reached for withdrawal, Contact support for more information </div>
+<!--        <div class="text-block-73 lawrence">Account Maturity date not reached for withdrawal, Contact support for more information </div>-->
+
+        <div class="text-block-73 lawrence">Your Account is Limited</div>
+
+        <div class="text-block-72 lawrence">This action is not allowed at the moment.please upgrade your account to
+          activate this feature.</div>
 
         <!--        <div class="margin-top margin-medium">-->
         <!--          <a href="#" @click="proceed"  class="button w-button">Make Deposit</a>-->

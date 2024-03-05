@@ -11,6 +11,7 @@
     <info-confirm-payment-modal4 @close="hideDialog2" v-if="dialogIsVisible2"/>
     <div class="margin-top margin-large">
       <div class="amount-wrapper">
+
         <div class="currency-converter">
           <div class="margin-bottom margin-small">
             <div class="top-currency-block">

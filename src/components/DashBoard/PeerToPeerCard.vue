@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-body-wrapper align-center">
+    <peer-to-peer-modal-buy @close="hideDialog2" v-if="dialogIsVisible2" />
     <div class="kyc-nav-wrapper margin-vertical margin-large">
       <router-link to="/sendMoneyView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
@@ -70,7 +71,7 @@
                   <p>Bank transfer</p>
                 </td>
                 <td>
-                  <p class="buy">Buy</p>
+                  <p @click="showDialog2" class="buy">Buy</p>
                 </td>
               </tr>
               <tr>
@@ -90,7 +91,7 @@
                   <p>Neteller</p>
                 </td>
                 <td>
-                  <p class="buy">Buy</p>
+                  <p @click="showDialog2" class="buy">Buy</p>
                 </td>
               </tr>
               <tr>
@@ -110,7 +111,7 @@
                   <p>Skrill</p>
                 </td>
                 <td>
-                  <p class="buy">Buy</p>
+                  <p @click="showDialog2" class="buy">Buy</p>
                 </td>
               </tr>
               <tr>
@@ -131,7 +132,7 @@
                   <p>Neteller</p>
                 </td>
                 <td>
-                  <p class="buy">Buy</p>
+                  <p @click="showDialog2" class="buy">Buy</p>
                 </td>
               </tr>
               <tr>
@@ -152,7 +153,7 @@
                   <p>Neteller</p>
                 </td>
                 <td>
-                  <p class="buy">Buy</p>
+                  <p @click="showDialog2" class="buy">Buy</p>
                 </td>
               </tr>
               <tr>
@@ -171,7 +172,7 @@
                   <p class="limit">Interbank</p>
                 </td>
                 <td>
-                  <p class="buy">Buy</p>
+                  <p @click="showDialog2" class="buy">Buy</p>
                 </td>
               </tr>
             </table>
@@ -193,6 +194,8 @@
 
               <div class="section-2-content-1">
 
+                <img src="@/assets/order.png" alt="crd-low-cost" class="section-1-content-image">
+
                 <p class="text-1">Place an Order</p>
                 <hr class="new1">
                 <p class="text-2">Once you place a P2P order, the crypto asset will be escrowed by Binance P2P.</p>
@@ -201,7 +204,7 @@
               </div>
 
               <div class="section-2-content-1">
-
+                <img src="@/assets/seller.png" alt="crd-low-cost" class="section-1-content-image">
                 <p class="text-1">Pay the Seller</p>
                 <hr class="new1">
                 <p class="text-2">Send money to the seller via the suggested payment methods. Complete the fiat
@@ -211,7 +214,7 @@
               </div>
 
               <div class="section-2-content-1">
-
+                <img src="@/assets/crypto.png" alt="crd-low-cost" class="section-1-content-image">
                 <p class="text-1">Get your Crypto</p>
                 <hr class="new1">
                 <p class="text-2">Once the seller confirms receipt of money, the escrowed crypto will be released
@@ -219,7 +222,6 @@
                 <!--                  <p class="text-3" @click="onPostClick3">View Now</p>-->
 
               </div>
-
 
             </div>
 
@@ -230,7 +232,7 @@
             <h4 style="text-align: center;">Advantages of P2P Exchange</h4>
 
             <div class="section-1-content">
-              <img src="@/assets/internship.png" alt="crd-low-cost" class="section-1-content-image">
+              <img src="@/assets/globe.png" alt="crd-low-cost" class="section-1-content-image">
               <!--        <img src="@/assets/wealth.png" alt="" class="section-1-content-image">-->
               <!--        <em class="fas fa-bullseye-pointer fa-stack-1x fa-inverse icon-size"></em>-->
               <div class="section-1-content-text">
@@ -257,7 +259,7 @@
             </div>
 
             <div class="section-1-content">
-              <img src="@/assets/digital.png" alt="crd-low-cost" class="section-1-content-image">
+              <img src="@/assets/trading.png" alt="crd-low-cost" class="section-1-content-image">
               <!--        <img src="@/assets/insurance-64.png" alt="" class="section-1-content-image">-->
               <div class="section-1-content-text">
                 <p class="section-1-content-text-1">Trade at Your Preferred Prices</p>
@@ -332,12 +334,16 @@
 </template>
 
 <script>
+import PeerToPeerModalBuy from "@/components/Modals/PeerToPeerModalBuy.vue";
+
 export default {
   name: "PeerToPeerCard",
+  components: {PeerToPeerModalBuy},
   data() {
     return {
       currentPage: 1,
       itemsPerPage: 12,
+      dialogIsVisible2: false,
     };
   },
   computed: {
@@ -353,6 +359,12 @@ export default {
     // },
   },
   methods: {
+    hideDialog2() {
+      this.dialogIsVisible2 = false;
+    },
+    showDialog2() {
+      this.dialogIsVisible2 = true;
+    },
     previousPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
@@ -574,7 +586,7 @@ td {
   border-radius: 0.40rem;
   padding: 2.5rem 2rem;
   width: 410px;
-  height: 350px;
+  height: 430px;
   text-align: center;
   display: block;
   margin-right: auto;
@@ -608,13 +620,12 @@ hr.new1 {
 }
 
 .text-2{
-  font-size: 20px;
+  font-size: 19px;
   /*font-weight: bold;*/
   width: 80%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 2%;
 }
 
 .section-1{

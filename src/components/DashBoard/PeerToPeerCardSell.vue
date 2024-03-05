@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-body-wrapper align-center">
+    <peer-to-peer-modal-sell @close="hideDialog2" v-if="dialogIsVisible2" />
     <div class="kyc-nav-wrapper margin-vertical margin-large">
       <router-link to="/sendMoneyView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
@@ -71,7 +72,7 @@
                   <p>Interbank</p>
                 </td>
                 <td>
-                  <p class="buy">Sell</p>
+                  <p @click="showDialog2" class="buy">Sell</p>
                 </td>
               </tr>
               <tr>
@@ -90,7 +91,7 @@
                   <p class="limit">Skrill</p>
                 </td>
                 <td>
-                  <p class="buy">Sell</p>
+                  <p @click="showDialog2" class="buy">Sell</p>
                 </td>
               </tr>
               <tr>
@@ -110,7 +111,7 @@
                   <p>Skrill</p>
                 </td>
                 <td>
-                  <p class="buy">Sell</p>
+                  <p @click="showDialog2" class="buy">Sell</p>
                 </td>
               </tr>
               <tr>
@@ -130,7 +131,7 @@
                   <p>Neteller</p>
                 </td>
                 <td>
-                  <p class="buy">Sell</p>
+                  <p @click="showDialog2" class="buy">Sell</p>
                 </td>
               </tr>
               <tr>
@@ -150,7 +151,7 @@
                   <p>Bank Transfer</p>
                 </td>
                 <td>
-                  <p class="buy">Sell</p>
+                  <p @click="showDialog2" class="buy">Sell</p>
                 </td>
               </tr>
               <tr>
@@ -170,7 +171,7 @@
                   <p class="limit">Bank Transfer</p>
                 </td>
                 <td>
-                  <p class="buy">Sell</p>
+                  <p @click="showDialog2" class="buy">Sell</p>
                 </td>
               </tr>
             </table>
@@ -332,12 +333,16 @@
 </template>
 
 <script>
+import PeerToPeerModalSell from "@/components/Modals/PeerToPeerModalSell.vue";
+
 export default {
   name: "PeerToPeerCardSell",
+  components: {PeerToPeerModalSell},
   data() {
     return {
       currentPage: 1,
       itemsPerPage: 12,
+      dialogIsVisible2: false,
     };
   },
   computed: {
@@ -353,6 +358,12 @@ export default {
     // },
   },
   methods: {
+    hideDialog2() {
+      this.dialogIsVisible2 = false;
+    },
+    showDialog2() {
+      this.dialogIsVisible2 = true;
+    },
     previousPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
