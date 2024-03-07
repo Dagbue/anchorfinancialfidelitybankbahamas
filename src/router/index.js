@@ -242,6 +242,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/OrderDetail.vue'),
     meta: { hideNavigation: true }
   },
+  {
+    path: '/upgradeAccount',
+    name: 'upgradeAccount',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/UpgradeAccount.vue'),
+    meta: { hideNavigation: true }
+  },
 
 ]
 

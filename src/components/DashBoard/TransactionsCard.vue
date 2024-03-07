@@ -145,8 +145,8 @@
               <td>
                 <div class="separate-1">
                   <p>
-                    <!--                    <i class='bx bx-log-in-circle' ></i>-->
-                    <i class='bx bx-log-in-circle pending' ></i>
+                    <i class='bx bx-log-in-circle' ></i>
+<!--                    <i class='bx bx-log-in-circle pending' ></i>-->
                     <!--                    <i class='bx bx-log-out-circle'  ></i>-->
                   </p>
                 </div>

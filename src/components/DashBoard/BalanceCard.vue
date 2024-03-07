@@ -17,7 +17,7 @@
 <!--    </a>-->
 
     <a data-w-id="b4a46994-6187-287f-f799-9f553a35b0df" href="#" @click="showDialog" class="link-block w-inline-block">
-      <img src="@/assets/images/checked-pendding.svg" loading="lazy" width="16" alt="">
+      <img src="@/assets/images/checked.svg" loading="lazy" width="16" alt="">
       <div v-show="this.userData === 'account1'" class="dropdown-text dashboard text-size-small text-weight-medium">Hi {{this.contacts.AccountName1}}</div>
       <div v-show="this.userData === 'account2'" class="dropdown-text dashboard text-size-small text-weight-medium">Hi {{this.contacts.AccountName2}}</div>
       <img src="@/assets/images/arrow-down.svg" loading="lazy" width="16" alt="">

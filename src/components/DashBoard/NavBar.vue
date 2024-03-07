@@ -14,7 +14,7 @@
         <i class='bx bx-log-out ' @click="logOut"></i>
         <router-link to="/settingsView">
           <div  class="account-link w-inline-block">
-            <div>OO</div>
+            <div> ⚙️</div>
           </div>
         </router-link>
       </div>

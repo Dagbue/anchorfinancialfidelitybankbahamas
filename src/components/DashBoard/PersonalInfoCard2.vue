@@ -11,18 +11,6 @@
       <div class="w-form">
 
         <form v-show="this.userData === 'account1'" id="email-form" name="email-form" data-name="Email Form" method="get">
-<!--          <div class="name-wrapper">-->
-<!--            <div class="left">-->
-<!--              <label for="name-2">First name</label>-->
-<!--              &lt;!&ndash;                                <input type="text" class="input-field set w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2">&ndash;&gt;-->
-<!--              <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.FirstName}}</p>-->
-<!--            </div>-->
-<!--            <div class="right">-->
-<!--              <label for="name-4">Last name</label>-->
-<!--              &lt;!&ndash;                                <input type="text" class="input-field set w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">&ndash;&gt;-->
-<!--              <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.LastName}}</p>-->
-<!--            </div>-->
-<!--          </div>-->
           <div class="email-wrapper">
             <label for="name">Account Name</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name">-->
@@ -59,6 +47,8 @@
             <label for="name-7" class="field-label-2">NOTE:</label>
             <label for="name-7" class="field-label">You are unable to edit this profile because your account has been verified. If you feel that you need to edit, please reach out to the support team.</label>
           </div>
+
+          <p class="upgrade" @click="next" >Upgrade Account</p>
         </form>
 
         <form v-show="this.userData === 'account2'" id="email-form" name="email-form" data-name="Email Form" method="get">
@@ -110,6 +100,8 @@
             <label for="name-7" class="field-label-2">NOTE:</label>
             <label for="name-7" class="field-label">You are unable to edit this profile because your account has been verified. If you feel that you need to edit, please reach out to the support team.</label>
           </div>
+
+          <p class="upgrade" @click="next" >Upgrade Account</p>
         </form>
 
         <div class="w-form-done">
@@ -139,7 +131,6 @@ export default {
       return this.$store.getters.getUserData;
     },
   },
-
   async created() {
     const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
     querySnapshot.forEach((doc) => {
@@ -174,10 +165,14 @@ export default {
       this.contacts = data
     })
   },
-
   mounted() {
 
   },
+  methods: {
+    next() {
+      this.$router.push("/upgradeAccount")
+    }
+  }
 }
 </script>
 
@@ -251,5 +246,13 @@ li {display: inline-block; margin: 0 10px; }
   margin-top: 10px;
   padding: 10px;
   background-color: #ffdede;
+}
+.upgrade{
+  text-align: center;
+  background-color: #071333;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-top: 3%;
+  color: #ffffff;
 }
 </style>
