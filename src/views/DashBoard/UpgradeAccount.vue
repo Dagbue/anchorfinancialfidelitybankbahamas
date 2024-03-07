@@ -62,7 +62,7 @@
                     <div class="tier-part-1">
                       <p class="text-2">Tier 2</p>
                       <p class="text-3">
-                        <img src="@/assets/images/checked-blocked-2.svg" loading="lazy" width="16" alt="">
+<!--                        <img src="@/assets/images/checked-blocked-2.svg" loading="lazy" width="16" alt="">-->
                         <!--                        <img src="@/assets/images/checked-pendding.svg" loading="lazy" width="16" alt="">-->
                       </p>
                     </div>
@@ -84,7 +84,7 @@
                     <div class="tier-part-1">
                       <p class="text-2">Tier 3</p>
                       <p class="text-3">
-                        <img src="@/assets/images/checked-blocked-2.svg" loading="lazy" width="16" alt="">
+<!--                        <img src="@/assets/images/checked-blocked-2.svg" loading="lazy" width="16" alt="">-->
                         <!--                        <img src="@/assets/images/checked-pendding.svg" loading="lazy" width="16" alt="">-->
                       </p>
                     </div>
