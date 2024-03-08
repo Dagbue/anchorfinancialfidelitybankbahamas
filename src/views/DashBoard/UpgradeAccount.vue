@@ -107,6 +107,8 @@
               </div>
             </div>
 
+            <p class="upgrade" @click="next" >Upgrade Account</p>
+
 
           </div>
         </div>
@@ -185,6 +187,9 @@ export default {
 
       return formattedNumber;
     },
+    next(){
+      this.$router.push("/upgradeAccountPayment")
+    }
   },
 }
 </script>
@@ -368,6 +373,14 @@ export default {
 .text-5{
   color: rgba(119, 1, 1, 0.5);
   font-size: 13px;
+}
+.upgrade{
+  text-align: center;
+  background-color: #071333;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-top: 3%;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 600px){

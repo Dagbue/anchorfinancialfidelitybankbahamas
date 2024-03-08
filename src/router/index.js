@@ -248,6 +248,26 @@ const routes = [
     component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/UpgradeAccount.vue'),
     meta: { hideNavigation: true }
   },
+  {
+    path: '/upgradeAccountPayment',
+    name: 'upgradeAccountPayment',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/UpgradeAccountPayment.vue'),
+    meta: { hideNavigation: true }
+  },
+
+  {
+    path: '/upgradeAccountFundingView',
+    name: 'upgradeAccountFundingView',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/UpgradeAccountFundingView.vue'),
+    meta: { hideNavigation: true }
+  },
+
+  {
+    path: '/upgradeAccountFundingView2',
+    name: 'upgradeAccountFundingView2',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/UpgradeAccountFundingView2.vue'),
+    meta: { hideNavigation: true }
+  },
 
 ]
 
