@@ -23,7 +23,7 @@
         <div class="text-block-73 lawrence">{{digitalCurrency}} wallet Address: </div>
 
         <p v-show="digitalCurrency === 'Bitcoin'" class="lawrence-2">bc1q58egstml24ps85jclw8xgl6tnu2mx<br/>8wsfww6qj</p>
-        <p v-show="digitalCurrency === 'Ethereum'" class="lawrence-2">0x632C7704b5D80f19576b5dFBb149879CFe283Dfb</p>
+        <p v-show="digitalCurrency === 'Ethereum'" class="lawrence-2">0x632C7704b5D80f19576b5dFBb149879<br/>CFe283Dfb</p>
         <p v-show="digitalCurrency === 'USDT'" class="lawrence-2">TFzEqwoBWbPE8XYQ2nb9cgmYKev1fooSh2</p>
 
         <div class="text-block-73 lawrence">{{digitalCurrency}} Qr Code: </div>
