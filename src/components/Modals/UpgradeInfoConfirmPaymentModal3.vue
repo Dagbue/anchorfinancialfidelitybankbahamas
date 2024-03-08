@@ -108,6 +108,7 @@ li {display: inline-block; margin: 0 10px; }
   padding: 5px;
   margin-bottom: 1%;
   text-align: center;
+  width: 100%;
 }
 
 .backdrop {
