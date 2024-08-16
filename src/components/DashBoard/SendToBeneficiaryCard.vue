@@ -12,15 +12,15 @@
       </a>
     </router-link>
 
-<!--    <router-link to="/peerToPeerView">-->
-      <a class="link-block-3 w-inline-block beneficiary-list" @click="showDialog2">
+    <router-link to="/peerToPeerView">
+      <a class="link-block-3 w-inline-block beneficiary-list" >
         <img src="@/assets/images/add.svg" loading="lazy" alt="">
         <div class="text-block-63 ">
         Digital currency Trade platform
           <p class="lawence" style="color: rgba(219,101,123,0.6);">Trade, Send or withdraw various digital currencies through our P2P service</p>
         </div>
       </a>
-<!--    </router-link>-->
+    </router-link>
 
   </section>
 </template>

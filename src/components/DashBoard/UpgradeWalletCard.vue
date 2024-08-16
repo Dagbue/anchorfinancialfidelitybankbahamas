@@ -5,7 +5,7 @@
 
     <div class="back-button margin-vertical margin-large">
       <!--            <a href="@/assets/views/home-view.html" class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>-->
-      <router-link to="/homeView"><a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a></router-link>
+      <router-link to="/upgradeAccount"><a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a></router-link>
     </div>
 
     <div class="add-money-banner">

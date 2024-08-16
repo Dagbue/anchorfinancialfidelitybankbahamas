@@ -58,7 +58,7 @@
                     </div>
                   </div>
 
-                  <div class="tier-part">
+                  <div @click="next" class="tier-part">
                     <div class="tier-part-1">
                       <p class="text-2">Tier 2</p>
                       <p class="text-3">
@@ -80,7 +80,7 @@
                     </div>
                   </div>
 
-                  <div class="tier-part">
+                  <div @click="next" class="tier-part">
                     <div class="tier-part-1">
                       <p class="text-2">Tier 3</p>
                       <p class="text-3">
