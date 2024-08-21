@@ -10,7 +10,7 @@
     <form ref="form" class="margin-top margin-large" @submit.prevent="next" >
       <div class="kyc-form-wrapper">
 
-        <select id="field" name="field" required=""  data-name="Field" class="input-field select-field w-select" >
+        <select id="field" name="field" required="" v-model="selectedBankName"  data-name="Field" class="input-field select-field w-select" >
           <option value="">Select Bank</option>
           <option value="chase">Chase Bank</option>
           <option value="bofa">Bank of America</option>
@@ -133,10 +133,10 @@
           <option value="charlesschwab">Charles Schwab Bank</option>
         </select>
 
-        <input   type="text"  class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Enter account name" id="field-3" required="">
+        <input   type="text" v-model="accountName"  class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Enter account name" id="field-3" required="">
 
 
-        <input   type="text"  class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Enter account number" id="field-3" required="">
+        <input   type="text" v-model="accountNumber"  class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Enter account number" id="field-3" required="">
 
 <!--        <div v-if="passwordErrors.length" class="error-messages">-->
 <!--          <ul>-->
@@ -144,7 +144,7 @@
 <!--          </ul>-->
 <!--        </div>-->
 
-        <input   type="text"  class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Enter routing number" id="field-3" required="">
+        <input   type="text" v-model="routingNumber"  class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Enter routing number" id="field-3" required="">
 
 <!--        <p class="input-field w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3"></p>-->
 
@@ -170,6 +170,10 @@ export default {
       creditAccountName: "",
       isChecked: false,
       passwordErrors: [],
+      selectedBankName: "",
+      accountName: "",
+      accountNumber: "",
+      routingNumber: "",
     }
   },
   computed:{
@@ -193,8 +197,14 @@ export default {
     // }
   },
   methods:{
-    next(){
-      this.$router.push("/transferAmountView");
+    async next() {
+      await this.$store.commit('updateLoginForm', {
+        selectedBankName: this.selectedBankName,
+        accountName: this.accountName,
+        accountNumber: this.accountNumber,
+        routingNumber: this.routingNumber,
+      });
+      await this.$router.push("/transferAmountView");
       window.scrollTo(0, 0);
     }
 

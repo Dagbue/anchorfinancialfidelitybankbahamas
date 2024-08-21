@@ -7,9 +7,9 @@
       </div>
       <div class="text-block-54">Enter the amount you want to send</div>
     </div>
-    <confirm-payment-modal @close="hideDialog" v-if="dialogIsVisible"/>
+    <confirm-payment-modal @close="hideDialog"  v-if="dialogIsVisible"/>
     <info-confirm-payment-modal4 @close="hideDialog2" v-if="dialogIsVisible2"/>
-    <div class="margin-top margin-large">
+    <div class="margin-top margin-large" @submit.prevent="">
       <div class="amount-wrapper">
 
         <div class="currency-converter">
@@ -66,7 +66,7 @@
       </div>
 
       <div class="margin-top margin-medium" >
-        <a data-w-id="49543b81-3e63-ef35-1c90-87e3c23665d2" href="#" @click="showDialog2"  class="button w-button">Proceed</a>
+        <a data-w-id="49543b81-3e63-ef35-1c90-87e3c23665d2" href="#" @click="showDialog"  class="button w-button">Proceed</a>
       </div>
 
 
@@ -80,6 +80,7 @@ import ConfirmPaymentModal from "@/components/Modals/ConfirmPaymentModal.vue";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "@/firebase/config";
 import InfoConfirmPaymentModal4 from "@/components/Modals/InfoConfirmPaymentModal4.vue";
+import {mapState} from "vuex";
 
 export default {
   name: "TransferAmountCard",
@@ -96,17 +97,13 @@ export default {
       showPassword: false,
       pins: [],
       contacts: [],
+      isModalAOpen: true,
+      isModalBOpen: false,
     };
   },
 
   computed: {
-    // ...mapState({
-    //   loading: state => state.fundTransfer.loading,
-    //   auth: state => state.auth,
-    //   userInfo: state => state.auth.userInfo,
-    //   accountState: state => state.auth.accountState,
-    //   activeRate: state => state.rate.activeRate,
-    // }),
+    ...mapState(['count','screen','loginForm']),
     // transferFormData() {
     //   return StoreUtils.rootGetters(StoreUtils.getters.fundTransfer.getTransferFormData)
     // },
@@ -117,6 +114,16 @@ export default {
   },
 
   methods: {
+    closeModalA() {
+      this.isModalAOpen = false;
+    },
+    closeModalB() {
+      this.isModalBOpen = false;
+    },
+    switchModals() {
+      this.dialogIsVisible = false; // Close Modal A
+      this.dialogIsVisible2 = true;  // Open Modal B
+    },
     formatNumber(number) {
       // Convert the number to a string
       let numStr = String(number);
@@ -134,26 +141,33 @@ export default {
       return formattedNumber;
     },
     hideDialog() {
+      // this.$store.commit('updateLoginForm', {
+      //   selectedBankName: "",
+      //   accountName: "",
+      //   accountNumber: "",
+      //   routingNumber: "",
+      //   note: "",
+      //   amountNGN: "",
+      // });
       this.dialogIsVisible = false;
+      this.dialogIsVisible2 = true;
+      this.pins = "";
     },
     showDialog() {
+      this.$store.commit('updateLoginForm', {
+        selectedBankName: this.loginForm.selectedBankName,
+        accountName: this.loginForm.accountName,
+        accountNumber: this.loginForm.accountNumber,
+        routingNumber: this.loginForm.routingNumber,
+        note: this.note,
+        amountNGN: this.amountNGN,
+      });
       this.dialogIsVisible = true;
-      // StoreUtils.commit(StoreUtils.mutations.fundTransfer.updateTransferFormData, {
-      //   email: this.userInfo.customerEmail,
-      //   amount: this.amountNGN,
-      //   bankName: this.transferFormData.bankName,
-      //   bankcode: this.transferFormData.bankcode,
-      //   reference: this.randomString,
-      //   creditAccountName: this.transferFormData.creditAccountName,
-      //   creditAccountNumber: this.transferFormData.creditAccountNumber,
-      //   note: this.note,
-      //   pin: this.pins.toString().replaceAll(',','')
-      // });
-      this.model.pin = "";
-
+      this.pins = "";
     },
     hideDialog2() {
       this.dialogIsVisible2 = false;
+      this.$router.push("/fundWalletView");
     },
     showDialog2() {
       this.dialogIsVisible2 = true;

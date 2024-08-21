@@ -77,10 +77,10 @@
     <div class="margin-top margin-medium">
       <div class="payment-email-wrapper">
         <div class="payment-email">
-          <div class="text-block-61">Bank Name: Chase bank</div>
-          <div class="text-block-61">Bank Routing Number: 061092387</div>
-          <div class="text-block-61">Bank Account Name: Val Wingfield</div>
-          <div class="text-block-62">Direct Deposit Account Number: 559610335</div>
+          <div class="text-block-61">Bank Name: </div>
+          <div class="text-block-61">Bank Routing Number: </div>
+          <div class="text-block-61">Bank Account Name: </div>
+          <div class="text-block-62">Direct Deposit Account Number: </div>
         </div>
         <div class="copy-button">
           <a @click="copyToClipboard('559610335')" class="button is-secondary copy ">Copy</a>

@@ -18,6 +18,7 @@ const store = createStore({
     Approved: false,
     userData: "account1",
     digitalCurrency: "",
+    loginForm: {},
   },
   mutations: {
     setUser(state, payload) {
@@ -35,10 +36,16 @@ const store = createStore({
     setDigitalCurrency(state, payload) {
       state.digitalCurrency = payload;
     },
+    updateLoginForm(state, payload){
+      state.loginForm = payload
+    },
   },
   getters: {
     finalChange(state) {
       return state.Approved;
+    },
+    getLoginForm: (state) => {
+      return state.loginForm;
     },
 
     getUserData: state => state.userData,

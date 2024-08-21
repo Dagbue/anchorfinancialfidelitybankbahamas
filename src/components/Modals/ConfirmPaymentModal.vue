@@ -2,6 +2,7 @@
   <div>
     <div class="backdrop"></div>
     <dialog open>
+      <info-confirm-payment-modal4 @close="hideDialog2" v-if="dialogIsVisible2"/>
       <form class="payment-modal" @submit.prevent="">
         <div class="margin-bottom margin-medium">
           <div class="amount-profile-wrapper">
@@ -14,29 +15,35 @@
         <div class="payment-details">
           <div class="payment-details-row">
             <div class="text-block-72">From</div>
-<!--            <div class="text-block-73 lawrence">{{this.userInfo.customerFirstName}} {{this.userInfo.customerLastName}}</div>-->
+            <div v-show="this.userData === 'account1'" class="text-block-73 lawrence">{{this.contacts.AccountName1}}</div>
+
+            <div v-show="this.userData === 'account2'" class="text-block-73 lawrence">{{this.contacts.AccountName2}}</div>
           </div>
           <div class="payment-details-row">
             <div class="text-block-72">To</div>
-<!--            <div class="text-block-73">{{this.transferFormData.creditAccountName}}</div>-->
+            <div class="text-block-73">{{this.loginForm.accountName}}</div>
+          </div>
+          <div class="payment-details-row">
+            <div class="text-block-72">Amount</div>
+            <div class="text-block-73">${{this.loginForm.amountNGN}}</div>
           </div>
           <div class="payment-details-row">
             <div class="text-block-72">Account number</div>
-<!--            <div class="text-block-73">{{this.transferFormData.creditAccountNumber}}</div>-->
+            <div class="text-block-73">{{this.loginForm.accountNumber}}</div>
           </div>
           <div class="payment-details-row">
-            <div class="text-block-72">Sort code</div>
-            <div class="text-block-73">20-30-45</div>
+            <div class="text-block-72">Sort code / <br/> Routing Number</div>
+            <div class="text-block-73">{{this.loginForm.routingNumber}}</div>
           </div>
           <div class="payment-details-row">
             <div class="text-block-72">Note</div>
-<!--            <div class="text-block-73">{{this.transferFormData.note}}</div>-->
+            <div class="text-block-73">{{this.loginForm.note}}</div>
           </div>
         </div>
         <div class="margin-top margin-medium">
           <!--            <a href="#" @click="sendToNGNAccount"  class="button w-button">Proceed with payment</a>-->
 <!--          <base-button :loading="loading"></base-button>-->
-          <button class="button max-width-full w-button">Proceed with payment</button>
+          <button class="button max-width-full w-button" @click="showDialog2">Proceed with payment</button>
         </div>
         <div class="margin-top margin-small">
           <a href="#"  @click="cancel" class="button is-secondary w-button">Cancel payment</a>
@@ -47,21 +54,81 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "@/firebase/config";
+import InfoConfirmPaymentModal4 from "@/components/Modals/InfoConfirmPaymentModal4.vue";
+
 export default {
   name: "ConfirmPaymentModal",
+  components: {InfoConfirmPaymentModal4},
   emits: ['close'],
+  data() {
+    return {
+      contacts: [],
+      dialogIsVisible2: false,
+    };
+  },
   computed: {
-    // ...mapState({
-    //   loading: state => state.fundTransfer.loading,
-    //   auth: state => state.auth,
-    //   userInfo: state => state.auth.userInfo,
-    // }),
+    ...mapState(['count','screen','loginForm']),
     // transferFormData() {
     //   return StoreUtils.rootGetters(StoreUtils.getters.fundTransfer.getTransferFormData)
     // }
+    userData() {
+      return this.$store.getters.getUserData;
+    },
 
   },
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+      }
+      this.contacts = data
+    })
+  },
+  async mounted() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+      }
+      this.contacts = data
+    })
+  },
   methods: {
+    hideDialog2() {
+      this.dialogIsVisible2 = false;
+    },
+    showDialog2() {
+      this.dialogIsVisible2 = true;
+      this.$emit('close')
+    },
     // async sendToNGNAccount() {
     //   await StoreUtils.dispatch(StoreUtils.actions.fundTransfer.doFundsTransferNGNNaira, {
     //     email: this.transferFormData.email,

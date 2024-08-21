@@ -10,17 +10,22 @@
 
 <!--        <div class="text-block-73 lawrence">Account Maturity date not reached for withdrawal, Contact support for more information </div>-->
 
-        <div class="text-block-73 lawrence">Your Account is Limited</div>
+        <div class="text-block-73 lawrence">To proceed with this transaction you are required to pay a
+          <span v-show="this.amount < 25000">10%</span>
+          <span v-show="this.amount >= 25000 && this.amount <= 50000">20%</span>
+          penalty fee of the amount entered
+        </div>
 
-        <div class="text-block-72 lawrence">This action is not allowed at the moment.please upgrade your account to
-          activate this feature.</div>
+<!--        <div class="text-block-72 lawrence">Amount Entered: {{this.loginForm.amountNGN}}</div>-->
+
+<!--        <div class="text-block-72 lawrence">Percentage required: {{result}}</div>-->
 
         <!--        <div class="margin-top margin-medium">-->
         <!--          <a href="#" @click="proceed"  class="button w-button">Make Deposit</a>-->
         <!--          &lt;!&ndash;          <base-button :loading="loading">Proceed to KYC</base-button>&ndash;&gt;-->
         <!--        </div>-->
         <div class="margin-top margin-small">
-          <a href="#" @click="$emit('close')" class="button is-secondary w-button">Cancel</a>
+          <a href="#" @click="proceed" class="button is-secondary w-button">Make Payment</a>
         </div>
       </form>
     </dialog>
@@ -28,19 +33,43 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: "InfoConfirmPaymentModal4",
   emits: ['close'],
+  data() {
+    return {
+      amount: 0,
+      result: null
+    };
+  },
   computed: {
-
+    ...mapState(['loginForm']),
   },
   methods: {
     proceed(){
-      // RouterUtils.navigateTo(RouterUtils.routes.kyc.updateKycStep.name)
       this.$router.push("/fundWalletView");
       window.scrollTo(0, 0);
     },
+    calculatePercentage() {
+      if (this.amount < 25000) {
+        this.result = (this.amount * 10) / 100;
+      } else if (this.amount >= 25000 && this.amount <= 50000) {
+        this.result = (this.amount * 20) / 100;
+      } else {
+        this.result = "Amount is above 50,000, no calculation needed";
+      }
+    }
   },
+  created() {
+    this.calculatePercentage()
+    this.amount = this.loginForm.amountNGN;
+  },
+  mounted() {
+    this.calculatePercentage()
+    this.amount = this.loginForm.amountNGN;
+  }
 }
 </script>
 
@@ -78,7 +107,7 @@ dialog {
   top: 15vh;
   width: 32rem;
   height: 20rem;
-  left: calc(50% - 14rem);
+  left: calc(50% - 13rem);
   margin: 0;
   background-color: transparent;
   z-index: 100;

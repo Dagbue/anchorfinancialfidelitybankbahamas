@@ -18,7 +18,7 @@
       </div>
 
 
-      <div class="section-2" @click="showDialog2" >
+      <div class="section-2" @click="convert" >
         <img src="@/assets/images/coin_1coin.png" loading="lazy" width="20" alt="" >
         <p class="action-button-text">Bill Pay</p>
       </div>
@@ -54,7 +54,7 @@ export default {
     },
 
     convert(){
-      this.$router.push("/");
+      this.$router.push("/billPayView");
       window.scrollTo(0, 0);
     },
 

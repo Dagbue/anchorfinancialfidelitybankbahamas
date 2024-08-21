@@ -189,6 +189,12 @@ const routes = [
     meta: { hideNavigation: true }
   },
   {
+    path: '/billPayView',
+    name: 'billPayView',
+    component: () => import(/* webpackChunkName: "billPayView" */ '../views/DashBoard/BillPayView.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
     path: '/accountFundingView',
     name: 'accountFundingView',
     component: () => import(/* webpackChunkName: "accountFundingView" */ '../views/DashBoard/AccountFundingView.vue'),

@@ -11,8 +11,8 @@
     <div class="add-money-banner">
       <div class="add-money-wrapper">
         <div>
-          <div class="text-block-58">Fund Account</div>
-          <div class="text-block-59">Add money to your Bank Account</div>
+          <div class="text-block-58">Bill Pay</div>
+          <div class="text-block-59">Schedule and Automate recurring payments directly from your account.</div>
         </div>
         <div><img src="@/assets/images/add-money-1-1.png" loading="lazy" width="84" alt=""></div>
       </div>
@@ -21,37 +21,38 @@
 
     <div class="margin-top margin-medium">
 
-      <router-link to="/accountFundingView">
+      <router-link to="">
         <a class="interac-card w-inline-block">
           <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">
             <div class="setup-title">
-              <div class="text-block-50">Direct Deposit</div>
-              <div class="text-block-51">Send money to the bank account displayed to fund your account</div>
+              <div class="text-block-50">Add Bank</div>
+              <div class="text-block-51">Send or deposit directly from your bank by linking your bank.</div>
             </div>
           </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">
         </a>
       </router-link>
 
-      <router-link to="/accountFundingView2">
+      <router-link to="">
         <a class="interac-card w-inline-block">
           <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">
             <div class="setup-title">
-              <div class="text-block-50">Add Cash</div>
-              <div class="text-block-51">Deposit Digital Currency into our wallet address displayed (recommended)</div>
+              <div class="text-block-50">Add Card</div>
+              <div class="text-block-51">Send or deposit directly from your credit/debit card by linking your card
+              details.</div>
             </div>
           </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">
         </a>
       </router-link>
 
 
-<!--        <a class="interac-card w-inline-block" @click="showDialog2">-->
-<!--          <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">-->
-<!--            <div class="setup-title">-->
-<!--              <div class="text-block-50">Deposit into your account</div>-->
-<!--              <div class="text-block-51">Connect your bank account, credit or debit card and fund instantly.</div>-->
-<!--            </div>-->
-<!--          </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">-->
-<!--        </a>-->
+<!--      <a class="interac-card w-inline-block" @click="showDialog2">-->
+<!--        <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">-->
+<!--          <div class="setup-title">-->
+<!--            <div class="text-block-50">Deposit into your account</div>-->
+<!--            <div class="text-block-51">Connect your bank account, credit or debit card and fund instantly.</div>-->
+<!--          </div>-->
+<!--        </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">-->
+<!--      </a>-->
 
 
     </div>
@@ -85,7 +86,7 @@
 import InfoConfirmPaymentModal2 from "@/components/Modals/InfoConfirmPaymentModal2.vue";
 
 export default {
-  name: "FundWalletCard",
+  name: "BillPayCard",
   components: {InfoConfirmPaymentModal2},
   data() {
     return {
