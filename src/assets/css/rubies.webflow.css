@@ -3642,8 +3642,8 @@ figcaption {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
 }
 
 .payment-details-row {
