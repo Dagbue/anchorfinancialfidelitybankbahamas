@@ -1,6 +1,6 @@
 <template>
   <section id="BalanceCard" class="balance-wrapper margin-top margin-large">
-    <div class="balance heading-style-h2" >&#36;{{formatNumber(this.contacts.Balance1 + this.contacts.Balance2)}}.00</div>
+    <div class="balance heading-style-h2" >&#36;{{formatNumber(this.contacts.Balance1 + this.contacts.Balance2 - this.contacts.WalletBalance)}}.00</div>
 <!--    <div class="balance heading-style-h2" v-else-if="this.accountState === 'NGN'">&#8358;0</div>-->
 <!--    <div class="balance heading-style-h2" >&#8358;0.00</div>-->
 
@@ -63,6 +63,8 @@ export default {
         'Balance1': doc.data().Balance1,
         'Balance2': doc.data().Balance2,
         'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
       }
       this.contacts = data
     })

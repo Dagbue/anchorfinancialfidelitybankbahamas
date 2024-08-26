@@ -82,7 +82,7 @@
           <div class="email-wrapper">
             <label for="name-4">Account Tier</label>
             <!--                              <input type="text" class="input-field set w-input" maxlength="256" name="name-4" data-name="Name 4" placeholder="" id="name-4">-->
-            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.AccountTier}}</p>
+            <p class="input-field set w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Account Name" id="field-3">{{this.contacts.AccountTierThomas}}</p>
 
           </div>
           <div class="email-wrapper">
@@ -156,6 +156,7 @@ export default {
         'AccountNumber1': doc.data().AccountNumber1,
         'AccountNumber2': doc.data().AccountNumber2,
         'AccountTier': doc.data().AccountTier,
+        'AccountTierThomas': doc.data().AccountTierThomas,
         'AccountType': doc.data().AccountType,
         'DOB1': doc.data().DOB1,
         'DOB2': doc.data().DOB2,

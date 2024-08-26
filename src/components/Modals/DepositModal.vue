@@ -11,7 +11,7 @@
           <div @click="$emit('close')" style="font-weight: bold;" class="text-block-73 lawrence">X</div>
         </div>
 
-        <p class="text-block-72">Price <span class="price">42,832.00 USD</span></p>
+        <p class="text-block-72">Price <span class="price">{{selectedItem}} USD</span></p>
 
 <!--        <p class="text-block-72">Processing Fee<span class="price"> - BTC </span></p>-->
 
@@ -25,16 +25,16 @@
             </div>
             <div class="right-block">
               <!--                        <div class="text-balance">Balance: 0 CAD</div>-->
-              <div class="text-balance">Balance: {{formatNumber(this.contacts.Balance1 + this.contacts.Balance2)}}.00 USD</div>
+              <div class="text-balance">Balance: {{formatNumber(this.contacts.Balance1 + this.contacts.Balance2 - this.contacts.WalletBalance)}}.00 USD</div>
               <!--                        <div class="text-balance" v-else >Balance: {{ userInfo.accounts[1].accountBalance | formatAmount }} NGN</div>-->
             </div>
           </div>
 
-          {{amountBTC}}
+
 
           <div class="amount-input-wrapper">
             <div class="amount-field-wrapper">
-              <input type="number"  @change="convertToBitcoin"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
+              <input type="number" v-model="amountUSD"  @input="convertToBitcoin"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
             </div>
             <div class="right-block">
               <div class="text-block-68">USD</div>
@@ -56,7 +56,7 @@
 
           <div class="amount-input-wrapper">
             <div class="amount-field-wrapper">
-              <input type="number" v-model="amountBTC"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
+              <input type="number" v-model="bitcoin"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
             </div>
             <div class="right-block">
               <div class="text-block-68">BTC</div>
@@ -80,8 +80,10 @@
 </template>
 
 <script>
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, increment} from "firebase/firestore";
 import {db} from "@/firebase/config";
+import {doc, setDoc,} from "firebase/firestore";
+import Swal from "sweetalert2";
 
 export default {
   name: "DepositModal",
@@ -92,7 +94,14 @@ export default {
       amountUSD: "",
       amountBTC: "",
       conversionRate: 2,
+      bitcoin: null,
     };
+  },
+  props: {
+    selectedItem: {
+      type: Object,
+      default: null
+    }
   },
   computed: {
 
@@ -114,6 +123,8 @@ export default {
         'Balance1': doc.data().Balance1,
         'Balance2': doc.data().Balance2,
         'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
       }
       this.contacts = data
     })
@@ -136,17 +147,85 @@ export default {
       return formattedNumber;
     },
 
+    async fetchContacts() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+        querySnapshot.forEach((doc) => {
+          let data = {
+            id: doc.id,
+            FirstName: doc.data().FirstName,
+            LastName: doc.data().LastName,
+            Email: doc.data().Email,
+            PhoneNumber: doc.data().PhoneNumber,
+            Address: doc.data().Address,
+            City: doc.data().City,
+            Zip: doc.data().Zip,
+            AccountName1: doc.data().AccountName1,
+            AccountName2: doc.data().AccountName2,
+            Balance1: doc.data().Balance1,
+            Balance2: doc.data().Balance2,
+            IsPinSet: doc.data().IsPinSet,
+            WalletBalance: doc.data().WalletBalance,
+            WalletBalance2: doc.data().WalletBalance2,
+          };
+          this.contacts.push(data);
+        });
+      } catch (error) {
+        console.error("Error fetching contacts: ", error);
+      }
+    },
 
     convertToBitcoin() {
-      this.amountBTC = this.amountUSD;
-      // this.amountBTC = this.amountBTC.toLocaleString("en-US")
-      // this.amountBTC = this.amountBTC.toFixed(2);
+      this.bitcoin = (this.amountUSD / this.selectedItem).toFixed(8);
     },
-    proceed(){
-      // RouterUtils.navigateTo(RouterUtils.routes.kyc.updateKycStep.name)
-      this.$router.push("");
+
+    async sendMessage() {
+      // this.loading = true;  // Start loading
+      try {
+        await setDoc(doc(db, "dagbuelawrence@yopmail.com", "Info"), {
+          WalletBalance: increment(this.amountUSD),
+        }, { merge: true });
+
+        // await Swal.fire({
+        //   icon: 'success',
+        //   title: 'Success',
+        //   text: 'Request sent Successfully!',
+        // });
+      } catch (error) {
+        console.error("Error sending message:", error);
+        // await Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: 'Something went wrong!',
+        // });
+      } finally {
+        // this.resetForm();
+        // this.loading = false;  // Stop loading
+      }
+    },
+
+    async proceed() {
+      this.sendMessage();
+
+      // Wait for 2 seconds before proceeding with the rest of the actions
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Emit 'close' event immediately
+      this.$emit('close');
+
+      // Display the SweetAlert
+      await Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Deposit Successful',
+      });
+
+      // Scroll to the top of the page
       window.scrollTo(0, 0);
-    },
+
+      // Reload the page
+      window.location.reload();
+    }
   },
 }
 </script>

@@ -30,17 +30,24 @@
                     <div class="account-information-inner">
                       <div style="color: #071333;" v-show="this.userData === 'account1'" class="dropdown-text dashboard text-size-small text-weight-medium">{{this.contacts.AccountName1}}</div>
                       <div style="color: #071333;" v-show="this.userData === 'account2'" class="dropdown-text dashboard text-size-small text-weight-medium">{{this.contacts.AccountName2}}</div>
-                      <p>Account Tier : {{this.contacts.AccountTier}}</p>
+                      <p v-show="this.userData === 'account1'" >Account Tier : {{this.contacts.AccountTier}}</p>
+                      <p v-show="this.userData === 'account2'" >Account Tier : {{this.contacts.AccountTierThomas}}</p>
                     </div>
                   </div>
 
-                  <p class="text-1">Your account is limited to a withdrawal balance of $0</p>
+                  <div v-show="this.userData === 'account1'">
+                    <p v-if="this.contacts.AccountTier === 'Tier 1'" class="text-1">Your account is limited to a withdrawal balance of $0</p>
+                  </div>
+
+                  <div v-show="this.userData === 'account2'">
+                    <p v-if="this.contacts.AccountTierThomas === 'Tier 1'" class="text-1">Your account is limited to a withdrawal balance of $0</p>
+                  </div>
 
                   <div class="tier-part">
                     <div class="tier-part-1">
                       <p class="text-2">Tier 1</p>
                       <p class="text-3">
-                        <img src="@/assets/images/checked.svg" loading="lazy" width="16" alt="">
+                        <img v-show="this.userData === 'account1'" src="@/assets/images/checked.svg" loading="lazy" width="16" alt="">
 <!--                        <img src="@/assets/images/checked-pendding.svg" loading="lazy" width="16" alt="">-->
                       </p>
                     </div>
@@ -84,7 +91,7 @@
                     <div class="tier-part-1">
                       <p class="text-2">Tier 3</p>
                       <p class="text-3">
-<!--                        <img src="@/assets/images/checked-blocked-2.svg" loading="lazy" width="16" alt="">-->
+                        <img v-show="this.userData === 'account2'" src="@/assets/images/checked-blocked-2.svg" loading="lazy" width="16" alt="">
                         <!--                        <img src="@/assets/images/checked-pendding.svg" loading="lazy" width="16" alt="">-->
                       </p>
                     </div>
@@ -153,6 +160,7 @@ export default {
         'Balance2': doc.data().Balance2,
         'IsPinSet': doc.data().IsPinSet,
         'AccountTier': doc.data().AccountTier,
+        'AccountTierThomas': doc.data().AccountTierThomas,
       }
       this.contacts = data
     })

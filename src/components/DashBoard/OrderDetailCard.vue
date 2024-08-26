@@ -2,7 +2,7 @@
   <div class="dashboard-body-wrapper align-center">
 
     <div class="kyc-nav-wrapper margin-vertical margin-large">
-      <router-link to="/sendMoneyView">
+      <router-link to="/peerToPeerView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
       </router-link>
     </div>
@@ -30,9 +30,9 @@
               </div>
 
               <div class="section-2-part-1-ii">
-                <p style="color: #0aae43;" class="font">$ 100.00</p>
-                <p style="color: #db657b;" class="font">$ 48,458.36</p>
-                <p style="font-weight: 700;" class="font">0.00206362 BTC</p>
+                <p style="color: #0aae43;" class="font">$ {{formatNumber(this.peerToPeerForm.amount)}}.00 USD</p>
+                <p style="color: #db657b;" class="font">$ {{bitcoinRate}} USD</p>
+                <p style="font-weight: 700;" class="font">{{bitcoin}} BTC</p>
               </div>
 
             </div>
@@ -47,25 +47,25 @@
               </div>
 
               <div class="section-2-part-1-ii">
-                <p class="font" style="padding-bottom: 5px;">20579054711706906624</p>
-                <p class="font">2024-01-12 10:23:25</p>
+                <p class="font" style="padding-bottom: 5px;">{{randomString}}</p>
+                <p class="font">{{ formattedTime }}</p>
               </div>
 
             </div>
 
             <hr class="new1">
 
-            <div class="section-2-part-11">
-              <p class="order-created">Payment method</p>
-              <p class="timer">Transfer the funds to the seller’s wallet provided below.</p>
+<!--            <div class="section-2-part-11">-->
+<!--              <p class="order-created">Payment method</p>-->
+<!--              <p class="timer">Transfer the funds to the seller’s wallet provided below.</p>-->
 
-              <div>
-                <p>Bitcoin</p>
-                <p>Address : <span style="color: #db657b;">magdyarabcont@hotmail.com</span></p>
-              </div>
-            </div>
+<!--              <div>-->
+<!--                <p>Bitcoin</p>-->
+<!--                <p>Address : <span style="color: #db657b;">magdyarabcont@hotmail.com</span></p>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <hr class="new1">
+<!--            <hr class="new1">-->
 
             <div class="section-2-part-11">
               <p class="order-created">Notify Seller</p>
@@ -76,10 +76,10 @@
             <hr class="new1">
 
             <div class="margin-top margin-medium">
-              <a href="#"  class="button w-button">Transferred, notify seller</a>
+              <a href="#"  class="button w-button" @click.prevent="showSupportChat">Transferred, notify seller</a>
             </div>
             <div class="margin-top margin-small">
-              <a href="#" class="button is-secondary w-button">Cancel Order</a>
+              <a href="#" class="button is-secondary w-button" @click="cancelOrder">Cancel Order</a>
             </div>
 
           </div>
@@ -119,8 +119,159 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+import axios from "axios";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "@/firebase/config";
+
 export default {
-  name: "OrderDetailCard"
+  name: "OrderDetailCard",
+  data() {
+    return {
+      contacts: [],
+      bitcoinRate: null,
+      bitcoin: "",
+      randomString: "",
+      formattedTime: '',
+    };
+  },
+  computed: {
+    ...mapState(['peerToPeerForm']),
+  },
+  methods: {
+    cancelOrder() {
+      this.$router.push("/peerToPeerView");
+    },
+    getCurrentTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
+    updateTime() {
+      this.formattedTime = this.getCurrentTime();
+    },
+    formatNumber(number) {
+      // Convert the number to a string
+      let numStr = String(number);
+
+      // Split the string into integer and decimal parts (if any)
+      const parts = numStr.split('.');
+      const integerPart = parts[0];
+
+      // Add commas for thousands and millions
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      // Join the integer and decimal parts (if any)
+      const formattedNumber = parts.length === 2 ? formattedIntegerPart + '.' + parts[1] : formattedIntegerPart;
+
+      return formattedNumber;
+    },
+    fetchBitcoinRate() {
+      // Set loading to true when the request starts
+      this.loading = true;
+
+      // eslint-disable-next-line no-undef
+      axios.get('https://api.coindesk.com/v1/bpi/currentprice/BTC.json')
+          .then(response => {
+            this.bitcoinRate = response.data.bpi.USD.rate_float;
+            // Set loading to false when the data is successfully fetched
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error(error);
+            // Set loading to false also if there is an error
+            this.loading = false;
+          });
+    },
+
+    fetchBitcoinPnL() {
+      // Set loading to true when the request starts
+      this.loading = true;
+
+      axios.get('https://api.coingecko.com/api/v3/coins/bitcoin')
+          .then(response => {
+            const marketData = response.data.market_data;
+            this.bitcoinRate2 = marketData.current_price.usd;
+            this.pnlValue = marketData.price_change_24h_in_currency.usd;
+            this.pnlPercentage = marketData.price_change_percentage_24h;
+
+            // Set loading to false when the data is successfully fetched
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error(error);
+
+            // Set loading to false if there is an error
+            this.loading = false;
+          });
+    },
+
+    generateRandomString() {
+      const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      let result = '';
+      for (let i = 0; i < 18; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+      }
+      this.randomString = result;
+    },
+
+    convertToBitcoin() {
+      this.bitcoin = ( this.peerToPeerForm.amount  / this.bitcoinRate).toFixed(8);
+    },
+    showSupportChat() {
+      var Tawk_API = Tawk_API || {};
+      (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/66cbad5d50c10f7a00a054cb/1i65pqf2a';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      })();
+
+    }
+  },
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
+      }
+      this.contacts = data
+    })
+    this.fetchBitcoinRate()
+    this.convertToBitcoin();
+    this.fetchBitcoinPnL();
+    this.generateRandomString();
+    this.updateTime();
+  },
+  mounted() {
+    this.fetchBitcoinRate();
+    this.convertToBitcoin();
+    this.fetchBitcoinPnL();
+    this.generateRandomString();
+    this.updateTime();
+  }
 }
 </script>
 

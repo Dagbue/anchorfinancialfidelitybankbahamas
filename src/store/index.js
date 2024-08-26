@@ -19,6 +19,7 @@ const store = createStore({
     userData: "account1",
     digitalCurrency: "",
     loginForm: {},
+    peerToPeerForm: {},
   },
   mutations: {
     setUser(state, payload) {
@@ -39,6 +40,9 @@ const store = createStore({
     updateLoginForm(state, payload){
       state.loginForm = payload
     },
+    updatePeerToPeerForm(state, payload){
+      state.peerToPeerForm = payload
+    },
   },
   getters: {
     finalChange(state) {
@@ -46,6 +50,9 @@ const store = createStore({
     },
     getLoginForm: (state) => {
       return state.loginForm;
+    },
+    getPeerToPeerForm: (state) => {
+      return state.peerToPeerForm;
     },
 
     getUserData: state => state.userData,

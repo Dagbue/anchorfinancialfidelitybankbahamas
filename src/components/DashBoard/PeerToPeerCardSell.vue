@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-body-wrapper align-center">
-    <peer-to-peer-modal-sell @close="hideDialog2" v-if="dialogIsVisible2" />
+    <peer-to-peer-modal-sell @close="hideDialog2" v-if="dialogIsVisible2" :selected-item="selectedItem" />
+    <info-confirm-payment-modal5 @close="hideDialog" v-if="dialogIsVisible" />
     <div class="kyc-nav-wrapper margin-vertical margin-large">
       <router-link to="/sendMoneyView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
@@ -334,15 +335,24 @@
 
 <script>
 import PeerToPeerModalSell from "@/components/Modals/PeerToPeerModalSell.vue";
+import axios from "axios";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "@/firebase/config";
+import InfoConfirmPaymentModal5 from "@/components/Modals/InfoConfirmPaymentModal5.vue";
 
 export default {
   name: "PeerToPeerCardSell",
-  components: {PeerToPeerModalSell},
+  components: {InfoConfirmPaymentModal5, PeerToPeerModalSell},
   data() {
     return {
       currentPage: 1,
       itemsPerPage: 12,
+      dialogIsVisible: false,
       dialogIsVisible2: false,
+      selectedItem: null,
+      contacts: [],
+      bitcoin: '',
+      bitcoinRate: null,
     };
   },
   computed: {
@@ -358,12 +368,68 @@ export default {
     // },
   },
   methods: {
+
     hideDialog2() {
       this.dialogIsVisible2 = false;
+      // Open InfoConfirmPaymentModal5 after closing PeerToPeerModalSell
+      this.dialogIsVisible = true;
     },
     showDialog2() {
       this.dialogIsVisible2 = true;
+      this.selectedItem = this.bitcoinRate;
     },
+    hideDialog() {
+      this.dialogIsVisible = false;
+    },
+    showDialog() {
+      this.dialogIsVisible = true;
+      this.selectedItem = this.bitcoinRate;
+    },
+
+    fetchBitcoinRate() {
+      // Set loading to true when the request starts
+      this.loading = true;
+
+      // eslint-disable-next-line no-undef
+      axios.get('https://api.coindesk.com/v1/bpi/currentprice/BTC.json')
+          .then(response => {
+            this.bitcoinRate = response.data.bpi.USD.rate_float;
+            // Set loading to false when the data is successfully fetched
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error(error);
+            // Set loading to false also if there is an error
+            this.loading = false;
+          });
+    },
+
+    fetchBitcoinPnL() {
+      // Set loading to true when the request starts
+      this.loading = true;
+
+      axios.get('https://api.coingecko.com/api/v3/coins/bitcoin')
+          .then(response => {
+            const marketData = response.data.market_data;
+            this.bitcoinRate2 = marketData.current_price.usd;
+            this.pnlValue = marketData.price_change_24h_in_currency.usd;
+            this.pnlPercentage = marketData.price_change_percentage_24h;
+
+            // Set loading to false when the data is successfully fetched
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error(error);
+
+            // Set loading to false if there is an error
+            this.loading = false;
+          });
+    },
+
+    convertToBitcoin() {
+      this.bitcoin = ((this.contacts.WalletBalance - this.contacts.WalletBalance2)  / this.bitcoinRate).toFixed(8);
+    },
+
     previousPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
@@ -382,6 +448,37 @@ export default {
       }
     },
   },
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
+      }
+      this.contacts = data
+    })
+    this.fetchBitcoinRate()
+    this.convertToBitcoin();
+    this.fetchBitcoinPnL();
+  },
+  mounted() {
+    this.fetchBitcoinRate();
+    this.convertToBitcoin();
+    this.fetchBitcoinPnL();
+  }
 }
 </script>
 

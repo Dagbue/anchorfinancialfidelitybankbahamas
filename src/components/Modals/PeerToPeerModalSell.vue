@@ -10,7 +10,7 @@
           <div @click="$emit('close')" style="font-weight: bold;" class="text-block-73 lawrence">X</div>
         </div>
 
-        <p class="text-block-72">Price <span class="price">49,771.68 USD</span></p>
+        <p class="text-block-72">Price <span class="price">{{this.selectedItem}} USD</span></p>
 
         <p class="text-block-72">Processing Fee<span class="price"> - BTC </span></p>
 
@@ -24,17 +24,17 @@
             </div>
             <div class="right-block">
               <!--                        <div class="text-balance">Balance: 0 CAD</div>-->
-              <div class="text-balance">Balance: .00 BTC</div>
+              <div class="text-balance">Balance: {{this.contacts.WalletBalance}}.00 USD</div>
               <!--                        <div class="text-balance" v-else >Balance: {{ userInfo.accounts[1].accountBalance | formatAmount }} NGN</div>-->
             </div>
           </div>
 
           <div class="amount-input-wrapper">
             <div class="amount-field-wrapper">
-              <input type="number"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
+              <input type="number" v-model="amountUSD" @input="convertToBitcoin"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
             </div>
             <div class="right-block">
-              <div class="text-block-68">BTC</div>
+              <div class="text-block-68">USD</div>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="converter">
           <div class="top-currency-block">
             <div class="left-block">
-              <div class="text-block-67">I will receive</div>
+              <div class="text-block-67">You will receive</div>
             </div>
             <!--            <div class="right-block">-->
             <!--              &lt;!&ndash;                        <div class="text-balance">Balance: 0 CAD</div>&ndash;&gt;-->
@@ -53,7 +53,7 @@
 
           <div class="amount-input-wrapper">
             <div class="amount-field-wrapper">
-              <input type="number"  class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
+              <input type="number" v-model="bitcoin" class="amount-field w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="0.00" id="field-2" required="">
             </div>
             <div class="right-block">
               <div class="text-block-68">USD</div>
@@ -63,7 +63,7 @@
 
 
         <div class="margin-top margin-medium">
-          <a href="#"  class="button w-button">Proceed</a>
+          <a href="#"  class="button w-button" @click="proceed" >Proceed</a>
         </div>
         <!--        <div class="margin-top margin-small">-->
         <!--          <a href="#" @click="$emit('close')" class="button is-secondary w-button">Cancel</a>-->
@@ -77,16 +77,138 @@
 </template>
 
 <script>
+import {collection, doc, getDocs, setDoc} from "firebase/firestore";
+import {db} from "@/firebase/config";
+
 export default {
   name: "PeerToPeerModalSell",
   emits: ['close'],
+  data() {
+    return {
+      contacts: [],
+      amountUSD: "",
+      amountBTC: "",
+      conversionRate: 2,
+      bitcoin: null,
+    };
+  },
+  props: {
+    selectedItem: {
+      type: Object,
+      default: null
+    }
+  },
   computed: {
 
   },
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
+      }
+      this.contacts = data
+    })
+  },
   methods: {
-    proceed(){
+    formatNumber(number) {
+      // Convert the number to a string
+      let numStr = String(number);
+
+      // Split the string into integer and decimal parts (if any)
+      const parts = numStr.split('.');
+      const integerPart = parts[0];
+
+      // Add commas for thousands and millions
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      // Join the integer and decimal parts (if any)
+      const formattedNumber = parts.length === 2 ? formattedIntegerPart + '.' + parts[1] : formattedIntegerPart;
+
+      return formattedNumber;
+    },
+
+    async fetchContacts() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+        querySnapshot.forEach((doc) => {
+          let data = {
+            id: doc.id,
+            FirstName: doc.data().FirstName,
+            LastName: doc.data().LastName,
+            Email: doc.data().Email,
+            PhoneNumber: doc.data().PhoneNumber,
+            Address: doc.data().Address,
+            City: doc.data().City,
+            Zip: doc.data().Zip,
+            AccountName1: doc.data().AccountName1,
+            AccountName2: doc.data().AccountName2,
+            Balance1: doc.data().Balance1,
+            Balance2: doc.data().Balance2,
+            IsPinSet: doc.data().IsPinSet,
+            WalletBalance: doc.data().WalletBalance,
+            WalletBalance2: doc.data().WalletBalance2,
+          };
+          this.contacts.push(data);
+        });
+      } catch (error) {
+        console.error("Error fetching contacts: ", error);
+      }
+    },
+
+    convertToBitcoin() {
+      this.bitcoin = (this.amountUSD / this.selectedItem).toFixed(8);
+    },
+
+    async sendMessage() {
+      // this.loading = true;  // Start loading
+      try {
+        await setDoc(doc(db, "dagbuelawrence@yopmail.com", "Info"), {
+          WalletBalance: this.amountUSD,
+        }, { merge: true });
+
+        // await Swal.fire({
+        //   icon: 'success',
+        //   title: 'Success',
+        //   text: 'Request sent Successfully!',
+        // });
+      } catch (error) {
+        console.error("Error sending message:", error);
+        // await Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: 'Something went wrong!',
+        // });
+      } finally {
+        // this.resetForm();
+        // this.loading = false;  // Stop loading
+      }
+    },
+
+     proceed() {
       // RouterUtils.navigateTo(RouterUtils.routes.kyc.updateKycStep.name)
-      this.$router.push("/fundWalletView");
+      // this.$router.push("/orderDetail");
+      this.$store.commit('updatePeerToPeerForm', { amount: this.amountUSD });
+      this.$emit('close')
+      // await Swal.fire({
+      //   icon: 'success',
+      //   title: 'Success',
+      //   text: 'Deposit Successful',
+      // });
       window.scrollTo(0, 0);
     },
   },

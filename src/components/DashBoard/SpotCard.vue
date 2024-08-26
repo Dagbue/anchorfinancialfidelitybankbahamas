@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-body-wrapper align-center">
-    <deposit-modal @close="hideDialog2" v-if="dialogIsVisible2" />
-    <withdrawal-modal @close="hideDialog3" v-if="dialogIsVisible3" />
+    <deposit-modal @close="hideDialog2" v-if="dialogIsVisible2" :selected-item="selectedItem" />
+    <withdrawal-modal @close="hideDialog3" v-if="dialogIsVisible3" :selected-item="selectedItem" />
     <div class="kyc-nav-wrapper margin-vertical margin-large">
       <router-link to="/sendMoneyView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
@@ -36,8 +36,9 @@
 
             <div>
               <p class="text-1">Estimated Balance</p>
-              <p class="text-2">0.00 BTC</p>
-              <p class="text-3">Today‘s PnL + $0.00(0.00%)</p>
+              <p class="text-2">{{bitcoin}} BTC</p>
+              <p class="text-2">{{this.contacts.WalletBalance - this.contacts.WalletBalance2}} USD</p>
+              <p class="text-3">Today's PnL: ${{ pnlValue }} ({{ pnlPercentage }}%)</p>
             </div>
 
             <div class="action">
@@ -63,6 +64,9 @@
 <script>
 import DepositModal from "@/components/Modals/DepositModal.vue";
 import WithdrawalModal from "@/components/Modals/WithdrawalModal.vue";
+import axios from "axios";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "@/firebase/config";
 
 export default {
   name: "SpotCard",
@@ -73,6 +77,15 @@ export default {
       itemsPerPage: 12,
       dialogIsVisible2: false,
       dialogIsVisible3: false,
+      bitcoinRate: null,
+      selectedItem: null,
+      contacts: [],
+      bitcoin: '',
+      bitcoinPnL: '',
+      bitcoinRate2: 0,
+      pnlValue: 0,
+      pnlPercentage: 0,
+      loading: false,
     };
   },
   computed: {
@@ -88,11 +101,55 @@ export default {
     // },
   },
   methods: {
+    fetchBitcoinRate() {
+      // Set loading to true when the request starts
+      this.loading = true;
+
+      // eslint-disable-next-line no-undef
+      axios.get('https://api.coindesk.com/v1/bpi/currentprice/BTC.json')
+          .then(response => {
+            this.bitcoinRate = response.data.bpi.USD.rate_float;
+            // Set loading to false when the data is successfully fetched
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error(error);
+            // Set loading to false also if there is an error
+            this.loading = false;
+          });
+    },
+
+    fetchBitcoinPnL() {
+      // Set loading to true when the request starts
+      this.loading = true;
+
+      axios.get('https://api.coingecko.com/api/v3/coins/bitcoin')
+          .then(response => {
+            const marketData = response.data.market_data;
+            this.bitcoinRate2 = marketData.current_price.usd;
+            this.pnlValue = marketData.price_change_24h_in_currency.usd;
+            this.pnlPercentage = marketData.price_change_percentage_24h;
+
+            // Set loading to false when the data is successfully fetched
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error(error);
+
+            // Set loading to false if there is an error
+            this.loading = false;
+          });
+    },
+
+    convertToBitcoin() {
+      this.bitcoin = ((this.contacts.WalletBalance - this.contacts.WalletBalance2)  / this.bitcoinRate).toFixed(8);
+    },
     hideDialog2() {
       this.dialogIsVisible2 = false;
     },
     showDialog2() {
       this.dialogIsVisible2 = true;
+      this.selectedItem = this.bitcoinRate;
     },
 
     hideDialog3() {
@@ -100,6 +157,7 @@ export default {
     },
     showDialog3() {
       this.dialogIsVisible3 = true;
+      this.selectedItem = this.bitcoinRate;
     },
 
     previousPage() {
@@ -120,6 +178,37 @@ export default {
       }
     },
   },
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "dagbuelawrence@yopmail.com"));
+    querySnapshot.forEach((doc) => {
+      let data = {
+        'id': doc.id,
+        'FirstName': doc.data().FirstName,
+        'LastName': doc.data().LastName,
+        'Email': doc.data().Email,
+        'PhoneNumber': doc.data().PhoneNumber,
+        'Address': doc.data().Address,
+        'City': doc.data().City,
+        'Zip': doc.data().Zip,
+        'AccountName1': doc.data().AccountName1,
+        'AccountName2': doc.data().AccountName2,
+        'Balance1': doc.data().Balance1,
+        'Balance2': doc.data().Balance2,
+        'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
+      }
+      this.contacts = data
+    })
+    this.fetchBitcoinRate()
+    this.convertToBitcoin();
+    this.fetchBitcoinPnL();
+  },
+  mounted() {
+    this.fetchBitcoinRate();
+    this.convertToBitcoin();
+    this.fetchBitcoinPnL();
+  }
 }
 </script>
 

@@ -1,4 +1,4 @@
-<template>
+z<template>
   <div>
     <sign-with-email/>
   </div>

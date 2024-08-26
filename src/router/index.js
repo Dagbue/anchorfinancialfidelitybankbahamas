@@ -274,6 +274,48 @@ const routes = [
     component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/UpgradeAccountFundingView2.vue'),
     meta: { hideNavigation: true }
   },
+  {
+    path: '/addCard',
+    name: 'AddCardView',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/AddCardView.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/addCard2',
+    name: 'AddCardView2',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/AddCardView2.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/addBank',
+    name: 'AddBankView',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/AddBankView.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/addBank2',
+    name: 'AddBankView2',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/AddBankView2.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/addBank3',
+    name: 'AddBankView3',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/AddBankView3.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/addBank4',
+    name: 'AddBankView4',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/AddBankView4.vue'),
+    meta: { hideNavigation: true }
+  },
+  {
+    path: '/schedulePayment',
+    name: 'SchedulePaymentView',
+    component: () => import(/* webpackChunkName: "transferAmountView" */ '../views/DashBoard/SchedulePaymentView.vue'),
+    meta: { hideNavigation: true }
+  },
 
 ]
 

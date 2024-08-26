@@ -36,8 +36,8 @@
             <div @click="fetchData2" class="currency-card link-block-2 w-inline-block">
               <div class="left-block"><img src="@/assets/images/KYC.svg" loading="lazy" alt="">
                 <div class="balance-details">
-                  <div class="currency">{{this.contacts.AccountName2}}'s Account</div>
-                  <div class="balance-text">&#36; {{formatNumber(this.contacts.Balance2)}}.00</div>
+                  <div class="currency">{{this.contacts.AccountName2}}'s Account </div>
+                  <div class="balance-text">&#36; {{formatNumber(this.contacts.Balance2 - this.contacts.WalletBalance)}}.00</div>
                 </div>
               </div>
 
@@ -71,6 +71,7 @@ export default {
       userData2: "account1",
       userData3: "account2",
       contacts: [],
+      half: ""
     }
   },
   computed: {
@@ -96,9 +97,13 @@ export default {
         'Balance1': doc.data().Balance1,
         'Balance2': doc.data().Balance2,
         'IsPinSet': doc.data().IsPinSet,
+        'WalletBalance': doc.data().WalletBalance,
+        'WalletBalance2': doc.data().WalletBalance2,
       }
       this.contacts = data
     })
+
+    this.half = this.contacts.WalletBalance / 2
   },
 
   methods: {
