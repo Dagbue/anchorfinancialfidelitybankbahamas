@@ -58,7 +58,7 @@
           <a class="interac-card w-inline-block">
             <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">
               <div class="setup-title">
-                <div class="text-block-51">Verify your bank account by linking your Online details such as Email/UserName
+                <div class="text-block-51">Verify your bank account by linking your Online details such as Email/Username
                   and password.
                   <!--                    <strong>({{userInfo.customerEmail}})</strong>-->
                 </div>

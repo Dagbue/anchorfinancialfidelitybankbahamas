@@ -44,14 +44,16 @@
       </router-link>
 
 
-<!--        <a class="interac-card w-inline-block" @click="showDialog2">-->
-<!--          <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">-->
-<!--            <div class="setup-title">-->
-<!--              <div class="text-block-50">Deposit into your account</div>-->
-<!--              <div class="text-block-51">Connect your bank account, credit or debit card and fund instantly.</div>-->
-<!--            </div>-->
-<!--          </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">-->
-<!--        </a>-->
+      <router-link to="/billPayView">
+        <a class="interac-card w-inline-block">
+          <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">
+            <div class="setup-title">
+              <div class="text-block-50">Bill Pay</div>
+              <div class="text-block-51">Schedule and Automate recurring payments directly from your personal bank account.</div>
+            </div>
+          </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">
+        </a>
+      </router-link>
 
 
     </div>

@@ -77,13 +77,14 @@
     <div class="margin-top margin-medium">
       <div class="payment-email-wrapper">
         <div class="payment-email">
-          <div class="text-block-61">Bank Name: </div>
-          <div class="text-block-61">Bank Routing Number: </div>
-          <div class="text-block-61">Bank Account Name: </div>
-          <div class="text-block-62">Direct Deposit Account Number: </div>
+          <div class="text-block-61">Bank Name: Arrowhead credit Union</div>
+          <div class="text-block-61">Bank Routing Number: 322282603</div>
+          <div class="text-block-61">Bank Account Name: Tanya Mageo</div>
+          <div class="text-block-61">Bank Account Type: Personal checkings</div>
+          <div class="text-block-62">Direct Deposit Account Number: 10700762450837</div>
         </div>
         <div class="copy-button">
-          <a @click="copyToClipboard('559610335')" class="button is-secondary copy ">Copy</a>
+          <a @click="copyToClipboard('10700762450837')" class="button is-secondary copy ">Copy</a>
         </div>
       </div>
     </div>

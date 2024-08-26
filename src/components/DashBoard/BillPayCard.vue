@@ -12,7 +12,7 @@
       <div class="add-money-wrapper">
         <div>
           <div class="text-block-58">Bill Pay</div>
-          <div class="text-block-59">Schedule and Automate recurring payments directly from your account.</div>
+          <div class="text-block-59">Schedule and Automate recurring payments directly from your personal bank account.</div>
         </div>
         <div><img src="@/assets/images/add-money-1-1.png" loading="lazy" width="84" alt=""></div>
       </div>
@@ -123,7 +123,7 @@ export default {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'No Bank/Card Linked, kindly link them to proceed with this action',
+          text: 'No Bank/Card Linked, kindly go back to link your Bank/Card to proceed with this action',
         });
       } else {
         this.$router.push("/schedulePayment");
