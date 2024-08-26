@@ -2,10 +2,10 @@
   <div>
     <div class="backdrop"></div>
     <dialog open>
-      <form class="payment-modal">
+      <form class="payment-modal" @submit.prevent="proceed">
         <!--        <div class="image-wrapper"><img src="@/assets/images/clock.png" loading="lazy" width="161" alt=""></div>-->
 
-        <div class="separate">
+        <div class="separate" >
           <div class="text-block-73 lawrence">Add Bank Details</div>
           <div @click="$emit('close')" style="font-weight: bold;" class="text-block-73 lawrence">X</div>
         </div>
@@ -14,9 +14,6 @@
 
         <!--        <p class="text-block-72">Processing Fee<span class="price"> - BTC </span></p>-->
 
-
-
-        <form @submit.prevent="proceed">
 
           <div class="separate">
             <div class="input-form-2">
@@ -205,7 +202,6 @@
 
 
 
-      </form>
     </dialog>
   </div>
 </template>
@@ -682,7 +678,7 @@ span:hover{
 }
 @media (max-width: 500px) {
   dialog {
-    top: 13vh;
+    top: 5vh;
     width: 27rem;
     height: 20rem;
     left: calc(50% - 12.4rem);
@@ -693,6 +689,20 @@ span:hover{
   }
   p{
     font-size: unset;
+  }
+
+  .payment-modal {
+    width: 390px;
+  }
+
+  input {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .input-form-1{
+    padding: 7px 20px;
+    margin: 1px 0;
   }
 }
 </style>

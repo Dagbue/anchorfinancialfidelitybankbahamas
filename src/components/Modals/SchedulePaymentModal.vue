@@ -620,7 +620,7 @@ span:hover{
 }
 @media (max-width: 500px) {
   dialog {
-    top: 13vh;
+    top: 5vh;
     width: 27rem;
     height: 20rem;
     left: calc(50% - 12.4rem);
@@ -632,5 +632,24 @@ span:hover{
   p{
     font-size: unset;
   }
+
+  .payment-modal {
+    width: 400px;
+  }
+
+  input {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .input-form-1{
+    padding: 7px 20px;
+    margin: 1px 0;
+  }
+
+  input[type=date] {
+    width: 90%;
+  }
+
 }
 </style>

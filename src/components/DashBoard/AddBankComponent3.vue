@@ -509,5 +509,10 @@ select:focus {
   .alpha {
     background-image: url("@/assets/background.mobile.day.1.jpeg"); /* Mobile background image */
   }
+
+  .section-alpha{
+    max-width: 344px !important;
+    margin-top: 4%;
+  }
 }
 </style>

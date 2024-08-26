@@ -28,7 +28,7 @@
 
     </div>
 
-    <div class="section-2">
+    <div class="section-2 mobile">
       <p class="section-2-text">Chase Canada</p>
       <p class="section-2-text">Site map</p>
       <p class="section-2-text-second">Member FDIC</p>
@@ -111,5 +111,45 @@ export default {
 
 .bx:hover{
   color: #0060f0;
+}
+
+@media (max-width: 768px) {
+  .section-2{
+    display: block;
+    justify-content: unset;
+    gap: unset;
+    margin-bottom: unset;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .section-2-text{
+    color: #757575;
+    font-size: .73rem;
+    text-decoration: underline;
+  }
+
+  .footer{
+    padding-top: 2%;
+    position: fixed;
+  }
+
+  .mobile{
+    display: none;
+  }
+
+  .bx{
+    font-size: 20px;
+  }
+
+  .text-1{
+    font-size: 18px;
+  }
+
+  .line{
+    margin-bottom: 18px;
+    margin-top: 10px;
+  }
 }
 </style>
