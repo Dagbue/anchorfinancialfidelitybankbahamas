@@ -155,7 +155,7 @@
                     <div class="separate-1">
                       <p>
                         <i class='bx bx-log-in-circle' ></i>
-<!--                        <i class='bx bx-log-in-circle pending' ></i>-->
+                        <!--                    <i class='bx bx-log-in-circle pending' ></i>-->
                         <!--                    <i class='bx bx-log-out-circle'  ></i>-->
                       </p>
                     </div>
@@ -176,7 +176,7 @@
                   </td>
                   <td>
                     <div class="separate-3">
-                      <p class="amount-text" >&#36; 387,000.00
+                      <p class="amount-text" >&#36; 185,000.00
                         <!--                    <span v-if="items.accountNumber === accountCAD">CAD</span>-->
                         <!--                    <span v-if="items.accountNumber === accountNaira">NG</span>-->
                       </p>
@@ -184,7 +184,7 @@
                   </td>
                   <td>
                     <div class="separate-3">
-                      <p class="amount-text">28th Dec 2023</p>
+                      <p class="amount-text">7th Oct 2024</p>
                     </div>
                   </td>
                 </tr>
@@ -192,8 +192,84 @@
                   <td>
                     <div class="separate-1">
                       <p>
-                                            <i class='bx bx-log-in-circle' ></i>
-<!--                        <i class='bx bx-log-in-circle pending' ></i>-->
+                        <i class='bx bx-log-in-circle' ></i>
+                        <!--                        <i class='bx bx-log-in-circle pending' ></i>-->
+                        <!--                    <i class='bx bx-log-out-circle'  ></i>-->
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-2">
+                      <div class="name-text">Cr</div>
+                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
+                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-2">
+                      <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>
+                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
+                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-3">
+                      <p class="amount-text" >&#36; 2,000.00
+                        <!--                    <span v-if="items.accountNumber === accountCAD">CAD</span>-->
+                        <!--                    <span v-if="items.accountNumber === accountNaira">NG</span>-->
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-3">
+                      <p class="amount-text">17th Aug 2024</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr >
+                  <td>
+                    <div class="separate-1">
+                      <p>
+                        <i class='bx bx-log-in-circle' ></i>
+                        <!--                        <i class='bx bx-log-in-circle pending' ></i>-->
+                        <!--                    <i class='bx bx-log-out-circle'  ></i>-->
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-2">
+                      <div class="name-text">Cr</div>
+                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
+                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-2">
+                      <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>
+                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
+                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-3">
+                      <p class="amount-text" >&#36; 1,000.00
+                        <!--                    <span v-if="items.accountNumber === accountCAD">CAD</span>-->
+                        <!--                    <span v-if="items.accountNumber === accountNaira">NG</span>-->
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="separate-3">
+                      <p class="amount-text">3rd Jan 2024</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr >
+                  <td>
+                    <div class="separate-1">
+                      <p>
+                        <i class='bx bx-log-in-circle' ></i>
+                        <!--                        <i class='bx bx-log-in-circle pending' ></i>-->
                         <!--                    <i class='bx bx-log-out-circle'  ></i>-->
                       </p>
                     </div>
@@ -231,44 +307,6 @@
                     <div class="separate-1">
                       <p>
                         <i class='bx bx-log-in-circle' ></i>
-<!--                        <i class='bx bx-log-in-circle pending' ></i>-->
-                        <!--                    <i class='bx bx-log-out-circle'  ></i>-->
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="separate-2">
-                      <div class="name-text">Cr</div>
-                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
-                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
-                    </div>
-                  </td>
-                  <td>
-                    <div class="separate-2">
-                      <div class="name-text">{{this.contacts.LastName2}} {{this.contacts.FirstName2}}</div>
-                      <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
-                      <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
-                    </div>
-                  </td>
-                  <td>
-                    <div class="separate-3">
-                      <p class="amount-text" >&#36; 1,000.00
-                        <!--                    <span v-if="items.accountNumber === accountCAD">CAD</span>-->
-                        <!--                    <span v-if="items.accountNumber === accountNaira">NG</span>-->
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="separate-3">
-                      <p class="amount-text">3rd Jan 2024</p>
-                    </div>
-                  </td>
-                </tr>
-                <tr >
-                  <td>
-                    <div class="separate-1">
-                      <p>
-                                            <i class='bx bx-log-in-circle' ></i>
                         <!--                        <i class='bx bx-log-in-circle pending' ></i>-->
                         <!--                    <i class='bx bx-log-out-circle'  ></i>-->
                       </p>
@@ -276,7 +314,7 @@
                   </td>
                   <td>
                     <div class="separate-2">
-                      <div class="name-text">Cr</div>
+                      <div class="name-text">ExxonMobil</div>
                       <!--                      <p class="text-block-76" v-if="items.transactionStatus === 'VERIFIED'">{{items.transactionStatus}}</p>-->
                       <!--                      <p class="text-block-77" v-else>{{items.transactionStatus}}</p>-->
                     </div>
@@ -290,7 +328,7 @@
                   </td>
                   <td>
                     <div class="separate-3">
-                      <p class="amount-text" >&#36; 2,000.00
+                      <p class="amount-text" >&#36; 387,000.00
                         <!--                    <span v-if="items.accountNumber === accountCAD">CAD</span>-->
                         <!--                    <span v-if="items.accountNumber === accountNaira">NG</span>-->
                       </p>
@@ -298,7 +336,7 @@
                   </td>
                   <td>
                     <div class="separate-3">
-                      <p class="amount-text">17th Aug 2024</p>
+                      <p class="amount-text">28th Dec 2023</p>
                     </div>
                   </td>
                 </tr>
