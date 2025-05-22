@@ -21,16 +21,16 @@
 
     <div class="margin-top margin-medium">
 
-      <router-link to="/accountFundingView">
-        <a class="interac-card w-inline-block">
-          <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">
-            <div class="setup-title">
-              <div class="text-block-50">Direct Deposit</div>
-              <div class="text-block-51">Send money to the bank account displayed to fund your account</div>
-            </div>
-          </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">
-        </a>
-      </router-link>
+<!--      <router-link to="/accountFundingView">-->
+<!--        <a class="interac-card w-inline-block">-->
+<!--          <div class="setup-title-wrapper"><img src="@/assets/images/bank.svg" loading="lazy" alt="">-->
+<!--            <div class="setup-title">-->
+<!--              <div class="text-block-50">Direct Deposit</div>-->
+<!--              <div class="text-block-51">Send money to the bank account displayed to fund your account</div>-->
+<!--            </div>-->
+<!--          </div><img src="@/assets/images/Component-3.svg" loading="lazy" alt="">-->
+<!--        </a>-->
+<!--      </router-link>-->
 
       <router-link to="/accountFundingView2">
         <a class="interac-card w-inline-block">

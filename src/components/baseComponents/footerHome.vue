@@ -61,7 +61,7 @@
       </div>
       <hr />
       <p class="copyright">
-        © 2023 AFFBB | All Rights Reserved
+        © 2025 AFFBB | All Rights Reserved
       </p>
     </div>
   </div>

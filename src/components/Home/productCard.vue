@@ -31,19 +31,19 @@ export default {
     return {
       products: [
         {
-          title: "Nov 1, 2023",
+          title: "Feb 1, 2025",
           content:"Trinity Plaza will become AFFBB’s new Corporate Headquarters",
           src: "https://goaffcu.com/images/default-source/approved-images/new-headquarters-renovation.png?sfvrsn=970b66f_1",
           image: "Granddad.png",
         },
         {
-          title: "Oct 6, 2023",
-          content:"Shred Day 2023",
+          title: "Oct 6, 2024",
+          content:"Shred Day 2024",
           src: "https://goaffcu.com/images/default-source/approved-images/shred-day-web-banner.png?sfvrsn=dab6d8df_1",
           image: "Risk.png",
         },
         {
-          title: "Aug 7, 2023",
+          title: "Aug 7, 2024",
           content:"Fraud Prevention: Are You Protected?",
           src: "https://goaffcu.com/images/default-source/approved-images/0807-blogpostheader-webbanner-v6.jpg?sfvrsn=bd020fae_1",
           image: "budget.png",

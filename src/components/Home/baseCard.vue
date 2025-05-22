@@ -13,9 +13,9 @@
       </div>
 
       <div class="product-image-wrap">
-        <img v-show="this.product.title === 'Nov 1, 2023' " src="@/assets/New-Headquarters.png" class="image" alt="product" />
-        <img v-show="this.product.title === 'Oct 6, 2023' " src="@/assets/shred.png" class="image" alt="product" />
-        <img v-show="this.product.title === 'Aug 7, 2023' " src="@/assets/ATM-Outage.png" class="image" alt="product" />
+        <img v-show="this.product.title === 'Feb 1, 2025' " src="@/assets/New-Headquarters.png" class="image" alt="product" />
+        <img v-show="this.product.title === 'Oct 6, 2024' " src="@/assets/shred.png" class="image" alt="product" />
+        <img v-show="this.product.title === 'Aug 7, 2024' " src="@/assets/ATM-Outage.png" class="image" alt="product" />
         <img v-show="this.product.title === 'Jul 26, 2023' " src="@/assets/atm-header.png" class="image" alt="product" />
       </div>
 
