@@ -25,7 +25,7 @@
         <div style="color: #db657b" class="text-block-73 lawrence-4">. Closing this window will not effect your order.</div>
         <div style="color: #db657b" class="text-block-73 lawrence-4">. In your account history you can find the status of your order as well.</div>
         <div style="color: #db657b" class="text-block-73 lawrence-4">. We will deliver your product as soon as the transaction is confirmed.</div>
-        <div style="color: #db657b" class="text-block-73 lawrence-4">. If your wallet doesn't use proper fee estimations or there is a high load on the network, your transaction can take more time to be confirmed.</div>
+        <div  v-show="!mobile" style="color: #db657b" class="text-block-73 lawrence-4">. If your wallet doesn't use proper fee estimations or there is a high load on the network, your transaction can take more time to be confirmed.</div>
 
 
         <p  class="lawrence-2">bc1qffq5qt944k3q2v6ddr50mzlhm9dqp5k49az2cs</p>
@@ -53,6 +53,7 @@ export default {
     return {
       timer: null,
       timeRemaining: 3600, // 1 hour in seconds
+      mobile: false,
     };
   },
   computed: {
@@ -65,11 +66,25 @@ export default {
       return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     },
   },
+  created() {
+    window.addEventListener('resize', this.checkScreen);
+    this.checkScreen();
+  },
   methods: {
     proceed(){
       // RouterUtils.navigateTo(RouterUtils.routes.kyc.updateKycStep.name)
       this.$router.push("/fundWalletView");
       window.scrollTo(0, 0);
+    },
+    checkScreen() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth <= 700){
+        this.mobile = true;
+        return;
+      }
+      this.mobile = false;
+      this.mobileNav = false;
+      return;
     },
   },
   mounted() {
@@ -256,7 +271,7 @@ dialog {
 
 @media (max-width: 500px) {
   dialog {
-    top: 3vh;
+    top: 2vh;
     width: 27rem;
     height: 20rem;
     left: calc(50% - 12.4rem);
