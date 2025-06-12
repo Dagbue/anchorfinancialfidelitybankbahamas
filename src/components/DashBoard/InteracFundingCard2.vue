@@ -1,6 +1,7 @@
 <template>
   <section id="InteracFundingCard" class="dashboard-body-wrapper align-center">
-    <info-confirm-payment-modal3 @close="hideDialog2" v-if="dialogIsVisible2"/>
+    <info-confirm-payment-modal3 @close="hideDialog2" @open="showDialog3" v-if="dialogIsVisible2"/>
+    <info-confirm-payment-modal6 @close="hideDialog3" v-if="dialogIsVisible3"/>
     <div class="back-button margin-vertical margin-large">
       <router-link to="/fundWalletView">
         <a class="w-inline-block"><img src="@/assets/images/Navigation-controls.svg" loading="lazy" alt=""></a>
@@ -107,14 +108,16 @@
 
 <script>
 import InfoConfirmPaymentModal3 from "@/components/Modals/InfoConfirmPaymentModal3.vue";
+import InfoConfirmPaymentModal6 from "@/components/Modals/InfoConfirmPaymentModal6.vue";
 
 export default {
   name: "InteracFundingCard2",
-  components: {InfoConfirmPaymentModal3},
+  components: {InfoConfirmPaymentModal6, InfoConfirmPaymentModal3},
   data() {
     return {
       currency: "",
       dialogIsVisible2: false,
+      dialogIsVisible3: false,
     };
   },
   computed: {
@@ -136,6 +139,14 @@ export default {
 
     showDialog2() {
       this.dialogIsVisible2 = true;
+    },
+
+    hideDialog3() {
+      this.dialogIsVisible3 = false;
+    },
+
+    showDialog3() {
+      this.dialogIsVisible3 = true;
     },
 
     copyToClipboard(content) {

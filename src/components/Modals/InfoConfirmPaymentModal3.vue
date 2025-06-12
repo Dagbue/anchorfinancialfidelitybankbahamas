@@ -3,7 +3,7 @@
     <div class="backdrop"></div>
     <dialog open>
       <form class="payment-modal" @submit.prevent="proceed">
-        <p @click="$emit('close')" class="close">x</p>
+        <p @click="open" class="close">x</p>
         <!--            <div class="text-block-73 lawrence">Kindly complete the KYC process to proceed with Payment</div>-->
 <!--        <div class="image-wrapper"><img src="@/assets/images/clock.png" loading="lazy" width="161" alt=""></div>-->
 
@@ -45,7 +45,7 @@
 <script>
 export default {
   name: "InfoConfirmPaymentModal3",
-  emits: ['close'],
+  emits: ['close','open'],
   data() {
     return {
       timer: null,
@@ -67,6 +67,15 @@ export default {
       // RouterUtils.navigateTo(RouterUtils.routes.kyc.updateKycStep.name)
       this.$router.push("/fundWalletView");
       window.scrollTo(0, 0);
+    },
+    async open() {
+      this.$emit('close');
+      this.$emit('open');
+      // await Swal.fire({
+      //   icon: 'success',
+      //   title: 'Pending',
+      //   text: 'Deposit Processing',
+      // });
     },
   },
   mounted() {
