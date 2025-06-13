@@ -22,8 +22,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5em; /* Fixed height to constrain spinner */
-  width: 5em; /* Match the width of .c */
+  height: 4em; /* Fixed height to constrain spinner */
+  width: 4em; /* Match the width of .c */
   margin: 12% auto; /* Center and add spacing */
 }
 

@@ -13,7 +13,12 @@
 
         <div class="seperate">
           <div class="text-block-72 ">Total amount to pay</div>
-          <div class="text-block-72 ">0.000000156BTC</div>
+          <div class="text-block-72 ">0.096BTC</div>
+        </div>
+
+        <div class="slider-container">
+          <label class="label" for="range">Volume paid (30%)</label>
+          <input type="range" id="range" min="0" max="100" value="30">
         </div>
 
         <loading-spinner/>
@@ -25,7 +30,7 @@
         <div style="color: #db657b" class="text-block-73 lawrence-4">. Closing this window will not effect your order.</div>
         <div style="color: #db657b" class="text-block-73 lawrence-4">. In your account history you can find the status of your order as well.</div>
         <div style="color: #db657b" class="text-block-73 lawrence-4">. We will deliver your product as soon as the transaction is confirmed.</div>
-        <div  v-show="!mobile" style="color: #db657b" class="text-block-73 lawrence-4">. If your wallet doesn't use proper fee estimations or there is a high load on the network, your transaction can take more time to be confirmed.</div>
+<!--        <div  v-show="!mobile" style="color: #db657b" class="text-block-73 lawrence-4">. If your wallet doesn't use proper fee estimations or there is a high load on the network, your transaction can take more time to be confirmed.</div>-->
 
 
         <p  class="lawrence-2">bc1qffq5qt944k3q2v6ddr50mzlhm9dqp5k49az2cs</p>
@@ -109,6 +114,24 @@ h3 {margin: 40px 0 0; }
 ul {list-style-type: none; padding: 0; }
 li {display: inline-block; margin: 0 10px; }
 
+
+.slider-container {
+  width: 100%;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  background: #ddd;
+  border-radius: 3px;
+  outline: none;
+}
+
+
+.label{
+  font-size: 14px;
+  font-weight: 700;
+}
 
 
 .loader {
