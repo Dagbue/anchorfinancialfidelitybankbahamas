@@ -13,23 +13,23 @@
       <form @submit.prevent="completeResetPassword">
 
         <div class="has-addons">
-          <input v-if="showPassword"  type="text" class="input-form-1 password" required   placeholder="Create Passcode"/>
-          <input v-else type="password"  class="input-form-1  password" required  placeholder="Create Passcode"/>
+          <input v-if="showPassword" v-model="password"  type="text" class="input-form-1 password" required   placeholder="Create Passcode"/>
+          <input v-else v-model="password" type="password"  class="input-form-1  password" required  placeholder="Create Passcode"/>
           <div class="space" @click="toggleShow">
             <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }" ></i>
           </div>
         </div>
 
         <div class="has-addons">
-          <input v-if="showPassword2"   type="text" class="input-form-1 password"   placeholder="Confirm password"/>
-          <input v-else type="password"  class="input-form-1  password"   placeholder="Confirm password"/>
+          <input v-if="showPassword2" v-model="confirmPassword"   type="text" class="input-form-1 password"   placeholder="Confirm password"/>
+          <input v-else v-model="confirmPassword" type="password"  class="input-form-1  password"   placeholder="Confirm password"/>
           <div class="space" @click="toggleShow2">
             <i class="fas" :class="{ 'fa-eye-slash': showPassword2, 'fa-eye': !showPassword2 }" ></i>
           </div>
         </div>
 
         <div class="submit">
-          <button class="button max-width-full w-button">Proceed</button>
+          <button :disabled="isLoading" class="button max-width-full w-button">{{ isLoading ? 'Proceeding...' : 'Proceed' }}</button>
         </div>
 
       </form>
@@ -47,12 +47,19 @@ export default {
     return {
       showPassword: false,
       showPassword2: false,
+      password: '',
+      confirmPassword: '',
+      isLoading: false
     }
   },
   methods:{
     completeResetPassword(){
-      this.$router.push("/passwordResetSuccessful");
-      window.scrollTo(0, 0);
+      this.isLoading = true;
+      setTimeout(() => {
+        this.$router.push("/passwordResetSuccessful");
+        window.scrollTo(0, 0);
+        this.isLoading = false;
+      }, 5000);
     },
     toggleShow() {
       this.showPassword = !this.showPassword;

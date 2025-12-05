@@ -15,28 +15,28 @@
       <form @submit.prevent="next">
 
         <div class="input-form-2">
-                    <label>Account/Member Number</label>
+          <label>Account/Member Number</label>
           <input type="text"  placeholder="Account/Member Number" class="input-form-1" required="required"/>
           <!--          <input type="text"  placeholder="Last name"   class="input-form" required="required"/>-->
         </div>
 
         <div class="input-form-2">
-                    <label>SSN/TaxID</label>
+          <label>SSN/TaxID</label>
           <input type="text"  placeholder="SSN/TaxID"  class="input-form-1" required="required"/>
         </div>
 
         <div  class="input-form-2">
-                    <label>D.O.B</label>
+          <label>D.O.B</label>
           <input type="date"  placeholder="D.O.B"  class="input-form-1" required="required"/>
         </div>
 
         <div class="input-form-2">
-                    <label>Zip Code</label>
+          <label>Zip Code</label>
           <input type="text"  placeholder="Zip Code"  class="input-form-1" required="required"/>
         </div>
 
         <div class="input-form-2">
-                    <label>Valid ID (front)</label>
+          <label>Valid ID (front)</label>
           <input type="file"  placeholder=""  class="input-form-1" required="required"/>
         </div>
 
@@ -45,40 +45,40 @@
           <input type="file"  placeholder=""  class="input-form-1" required="required"/>
         </div>
 
-<!--        <div class="has-addons">-->
-<!--          &lt;!&ndash;          <label>Create Passcode</label>&ndash;&gt;-->
-<!--          <input @input="validatePassword" v-if="showPassword" v-model="userPassword"   type="text" class="input-form-1 password"   placeholder="Create Passcode" />-->
-<!--          <input @input="validatePassword" v-else type="password" v-model="userPassword"  class="input-form-1  password"  placeholder="Create Passcode"   >-->
-<!--          <div class="space" @click="toggleShow">-->
-<!--            <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }" ></i>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="has-addons">-->
+        <!--          &lt;!&ndash;          <label>Create Passcode</label>&ndash;&gt;-->
+        <!--          <input @input="validatePassword" v-if="showPassword" v-model="userPassword"   type="text" class="input-form-1 password"   placeholder="Create Passcode" />-->
+        <!--          <input @input="validatePassword" v-else type="password" v-model="userPassword"  class="input-form-1  password"  placeholder="Create Passcode"   >-->
+        <!--          <div class="space" @click="toggleShow">-->
+        <!--            <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }" ></i>-->
+        <!--          </div>-->
+        <!--        </div>-->
 
-<!--        <div v-if="passwordErrors.length" class="error-messages">-->
-<!--          <ul>-->
-<!--            <li v-for="error in passwordErrors" :key="error">{{ error }}</li>-->
-<!--          </ul>-->
-<!--        </div>-->
+        <!--        <div v-if="passwordErrors.length" class="error-messages">-->
+        <!--          <ul>-->
+        <!--            <li v-for="error in passwordErrors" :key="error">{{ error }}</li>-->
+        <!--          </ul>-->
+        <!--        </div>-->
 
-<!--        <div class="has-addons">-->
-<!--          &lt;!&ndash;          <label>Confirm Passcode</label>&ndash;&gt;-->
-<!--          <input @input="validatePassword" v-if="showPassword2"  type="text" class="input-form-1 password"   placeholder="Confirm password"   />-->
-<!--          <input @input="validatePassword" v-else type="password"   class="input-form-1  password"   placeholder="Confirm password"   >-->
-<!--          <div class="space" @click="toggleShow2">-->
-<!--            <i class="fas" :class="{ 'fa-eye-slash': showPassword2, 'fa-eye': !showPassword2 }" ></i>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="has-addons">-->
+        <!--          &lt;!&ndash;          <label>Confirm Passcode</label>&ndash;&gt;-->
+        <!--          <input @input="validatePassword" v-if="showPassword2"  type="text" class="input-form-1 password"   placeholder="Confirm password"   />-->
+        <!--          <input @input="validatePassword" v-else type="password"   class="input-form-1  password"   placeholder="Confirm password"   >-->
+        <!--          <div class="space" @click="toggleShow2">-->
+        <!--            <i class="fas" :class="{ 'fa-eye-slash': showPassword2, 'fa-eye': !showPassword2 }" ></i>-->
+        <!--          </div>-->
+        <!--        </div>-->
 
 
 
-<!--        <div class="checkbox-part">-->
-<!--          <input type="checkbox"  class="checkbox" required="required"/>-->
-<!--          <p class="checkbox-text">By signing up, you agree to the Terms of Service<br/>-->
-<!--            and Data Processing Agreement.</p>-->
-<!--        </div>-->
+        <!--        <div class="checkbox-part">-->
+        <!--          <input type="checkbox"  class="checkbox" required="required"/>-->
+        <!--          <p class="checkbox-text">By signing up, you agree to the Terms of Service<br/>-->
+        <!--            and Data Processing Agreement.</p>-->
+        <!--        </div>-->
 
         <div class="submit">
-          <button class="button max-width-full w-button">Submit</button>
+          <button :disabled="isLoading" class="button max-width-full w-button">{{ isLoading ? 'Submitting...' : 'Submit' }}</button>
         </div>
 
       </form>
@@ -114,6 +114,7 @@ export default {
       country: "",
       userPassword: "",
       passwordErrors: [],
+      isLoading: false
     }
   },
   methods:{
@@ -129,7 +130,7 @@ export default {
       emailjs.sendForm('service_9yzzsk1', 'template_fpszaov',this.$refs.form,  'Ej0bi3AzmStN55QmQ')
           .then((result) => {
             console.log('SUCCESS!', result.text);
-             Swal.fire({
+            Swal.fire({
               icon: 'success',
               title: 'success',
               text: "OTP sent successfully",
@@ -159,9 +160,16 @@ export default {
     },
 
     async next() {
-      await this.sendEmail()
-      this.$router.push("/verifyEmailAddress");
-      window.scrollTo(0, 0);
+      this.isLoading = true
+      try {
+        await this.sendEmail()
+        this.$router.push("/verifyEmailAddress");
+        window.scrollTo(0, 0);
+      } catch (err) {
+        console.error(err)
+      } finally {
+        this.isLoading = false
+      }
     },
 
     logIn(){

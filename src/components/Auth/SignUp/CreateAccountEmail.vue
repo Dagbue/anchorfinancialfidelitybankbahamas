@@ -312,7 +312,7 @@
         </div>
 
         <div class="submit">
-          <button class="button max-width-full w-button">Create account</button>
+          <button :disabled="isLoading" class="button max-width-full w-button">{{ isLoading ? 'Creating...' : 'Create account' }}</button>
         </div>
 
       </form>
@@ -352,12 +352,14 @@ export default {
     const file = ref(null)
     const filepath = ref(null)
     const error = ref(null)
+    const isLoading = ref(false)
 
     const store = useStore()
     const router = useRouter()
 
 
     const handleSubmit = async () => {
+      isLoading.value = true
       try {
         await store.dispatch('signup', {
           email: email.value,
@@ -372,6 +374,8 @@ export default {
           title: 'error',
           text: err.message,
         });
+      } finally {
+        isLoading.value = false
       }
     };
 
@@ -379,7 +383,7 @@ export default {
     return {
       email, password,
       url,filepath,file,
-      handleSubmit, error,
+      handleSubmit, error, isLoading,
       set, push, ref, sendEmailVerification,
       setDoc, doc
     }

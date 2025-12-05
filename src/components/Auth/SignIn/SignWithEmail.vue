@@ -39,7 +39,7 @@
 
 
         <div class="submit">
-          <button class="button max-width-full w-button">Login</button>
+          <button :disabled="isLoading" class="button max-width-full w-button">{{ isLoading ? 'Logging in...' : 'Login' }}</button>
         </div>
 
       </form>
@@ -99,52 +99,57 @@ export default {
   },
 
   setup (){
-      const email = ref('')
-      const password = ref('')
-      const error = ref(null)
-      const store = useStore()
-      const router = useRouter()
-      const db = getFirestore();
-      const auth = getAuth();
-      const userData2 = ref('account1')
-      const userData3 = ref('account2')
-      const handleSubmit = async () => {
-        try {
-          await store.dispatch('login', {
-            email: email.value,
-            password: password.value
-          })
-          // noinspection JSUnresolvedFunction,JSCheckFunctionSignatures
-          const querySnapshot = await getDocs(collection(db, auth.currentUser.email));
-          querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-            console.log (doc.data())
-          });
+    const email = ref('')
+    const password = ref('')
+    const error = ref(null)
+    const isLoading = ref(false)
+    const store = useStore()
+    const router = useRouter()
+    const db = getFirestore();
+    const auth = getAuth();
+    const userData2 = ref('account1')
+    const userData3 = ref('account2')
+    const handleSubmit = async () => {
+      isLoading.value = true
+      try {
+        await store.dispatch('login', {
+          email: email.value,
+          password: password.value
+        })
+        // noinspection JSUnresolvedFunction,JSCheckFunctionSignatures
+        const querySnapshot = await getDocs(collection(db, auth.currentUser.email));
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+          console.log (doc.data())
+        });
 
-          if ( email.value === "14lwcoast@gmail.com") {
-            await store.dispatch('fetchUserData', userData2);
-          } else if ( email.value === "thomasadam2051@gmail.com") {
-            await store.dispatch('fetchUserData', userData3);
-          } else {
-            await store.dispatch('fetchUserData', userData2);
-          }
+        if ( email.value === "14lwcoast@gmail.com") {
+          await store.dispatch('fetchUserData', userData2);
+        } else if ( email.value === "thomasadam2051@gmail.com") {
+          await store.dispatch('fetchUserData', userData3);
+        } else {
+          await store.dispatch('fetchUserData', userData2);
+        }
 
-          await router.push('/loginSuccess');
-        }
-        catch (err) {
-          error.value = err.message
-          await Swal.fire({
-            icon: 'error',
-            title: 'error',
-            text: err.message,
-          });
-        }
+        await router.push('/loginSuccess');
       }
-      return {
-        handleSubmit, email,
-        password, error,
-        user: computed(() => store.state.user),
-        getDocs, collection }
+      catch (err) {
+        error.value = err.message
+        await Swal.fire({
+          icon: 'error',
+          title: 'error',
+          text: err.message,
+        });
+      } finally {
+        isLoading.value = false
+      }
+    }
+    return {
+      handleSubmit, email,
+      password, error,
+      isLoading,
+      user: computed(() => store.state.user),
+      getDocs, collection }
   }
 
 }

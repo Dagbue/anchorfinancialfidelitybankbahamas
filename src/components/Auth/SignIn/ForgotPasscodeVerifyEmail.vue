@@ -18,13 +18,13 @@
           <input type="number" v-model="pins[1]" maxlength="1" @keyup="handleKeyUp($event, 1)" @keydown="handleKeyDown($event, 1)" required="required">
           <input type="number" v-model="pins[2]" maxlength="1" @keyup="handleKeyUp($event, 2)" @keydown="handleKeyDown($event, 2)" required="required">
           <input type="number" v-model="pins[3]" maxlength="1" @keyup="handleKeyUp($event, 3)" @keydown="handleKeyDown($event, 3)" required="required">
-          <input type="number" v-model="pins[4]" maxlength="1" @keyup="handleKeyUp($event, 2)" @keydown="handleKeyDown($event, 4)" required="required">
-          <input type="number" v-model="pins[5]" maxlength="1" @keyup="handleKeyUp($event, 3)" @keydown="handleKeyDown($event, 5)" required="required">
+          <input type="number" v-model="pins[4]" maxlength="1" @keyup="handleKeyUp($event, 4)" @keydown="handleKeyDown($event, 4)" required="required">
+          <input type="number" v-model="pins[5]" maxlength="1" @keyup="handleKeyUp($event, 5)" @keydown="handleKeyDown($event, 5)" required="required">
         </div>
 
         <div class="submit">
 
-          <button class="button max-width-full w-button">Verify</button>
+          <button :disabled="isLoading" class="button max-width-full w-button">{{ isLoading ? 'Verifying...' : 'Verify' }}</button>
 
         </div>
 
@@ -44,14 +44,19 @@ export default {
   data() {
     return {
       pins: [],
+      isLoading: false
     };
   },
   computed:{
   },
   methods: {
     completeResetPassword(){
-      this.$router.push("/setNewPassword");
-      window.scrollTo(0, 0);
+      this.isLoading = true;
+      setTimeout(() => {
+        this.$router.push("/setNewPassword");
+        window.scrollTo(0, 0);
+        this.isLoading = false;
+      }, 5000);
     },
     resendOtp(){
       // StoreUtils.dispatch(StoreUtils.actions.auth.resendOtp, {

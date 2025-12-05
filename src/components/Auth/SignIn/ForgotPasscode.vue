@@ -13,12 +13,12 @@
       <form @submit.prevent="initiateResetPassword">
 
 
-        <input type="email"   placeholder="Enter email address"  class="input-form-1" required="required"/>
+        <input type="email" v-model="email"   placeholder="Enter email address"  class="input-form-1" required="required"/>
 
 
 
         <div class="submit">
-          <button class="button max-width-full w-button">Reset Password</button>
+          <button :disabled="isLoading" class="button max-width-full w-button">{{ isLoading ? 'Resetting...' : 'Reset Password' }}</button>
         </div>
 
       </form>
@@ -35,6 +35,8 @@ export default {
   data(){
     return {
       showPassword: false,
+      email: '',
+      isLoading: false
     }
   },
   computed:{
@@ -47,8 +49,12 @@ export default {
       this.showPassword = !this.showPassword;
     },
     initiateResetPassword(){
-      this.$router.push("/forgotPasswordVerifyEmail");
-      window.scrollTo(0, 0);
+      this.isLoading = true;
+      setTimeout(() => {
+        this.$router.push("/forgotPasswordVerifyEmail");
+        window.scrollTo(0, 0);
+        this.isLoading = false;
+      }, 5000);
     },
     home(){
       this.$router.push("/");
