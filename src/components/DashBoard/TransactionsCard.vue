@@ -107,9 +107,9 @@ export default {
     previousPage() { if (this.currentPage > 1) this.currentPage--; },
     nextPage() { if (this.currentPage < this.totalPages) this.currentPage++; },
 
-    // Fix capitalization intelligently
+
     formatFrom(text) {
-      if (text === "Mgsb E*trade") return "Mgsb E*trade";  // Preserve exact case
+      if (text === "Mgsb E*trade") return "Mgsb E*trade";
       return this.capitalizeWords(text);
     },
 
@@ -117,7 +117,7 @@ export default {
       if (!text) return '';
       const lower = text.toLowerCase();
       if (lower === "btc" || lower === "bitcoin") return "BTC";
-      if (text === "Mgsb E*trade") return "Mgsb E*trade";   // Preserve exact case
+      if (text === "Mgsb E*trade") return "Mgsb E*trade";
       return this.capitalizeWords(text);
     },
 
@@ -151,18 +151,16 @@ export default {
 </script>
 
 <style scoped>
-/* ==================== CRITICAL FIXES ==================== */
+
 .name-text {
-  text-transform: none !important;     /* Disable forced lowercase */
+  text-transform: none !important;
 }
 
 td::first-letter {
-  text-transform: none !important;     /* Disable global first-letter capitalize */
+  text-transform: none !important;
 }
 
-/* Now we control capitalization 100% via JavaScript → perfect result */
 
-/* Rest of your original styles (unchanged) */
 h3 { margin: 40px 0 0 0; }
 ul { list-style-type: none; padding: 0; }
 li { display: inline-block; margin: 0 10px; }
